@@ -1,3 +1,7 @@
+layout: page
+title: "Docker"
+permalink: /docker
+
 # IMAGES
 `docker pull image`      # Looks locally for an image, then remotely (DockerHub) and stores it locally (happens automatically with the pull and run commands)
 
