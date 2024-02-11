@@ -1,2 +1,2 @@
-# technotes.github.io
+# Tech Notes
 Personal Technical Notes
