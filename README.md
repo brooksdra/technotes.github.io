@@ -1,13 +1,13 @@
 # Main Notes
 - [Docker](docker.md)
 - [firebase](firebase.md)
-- [git.md](git.md)
+- [git](git.md)
 - [IntelliJ](intelliJ.md)
-- [javascript.md](javascript.md)
-- [mongodb.md](mongodb.md)
-- [reactjs.md](reactjs.md)
-- [springboot.md](springboot.md)
-- [svn.md](svn.md)
+- [javascript](javascript.md)
+- [mongodb](mongodb.md)
+- [reactjs](reactjs.md)
+- [springboot](springboot.md)
+- [svn](svn.md)
 
 # Great Resource:
 [cheat sheets](https://cheat.sh) of everything!

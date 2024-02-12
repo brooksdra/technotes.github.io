@@ -1,10 +1,11 @@
+# MongoDB
 
-# From console
+## From console
 `db.iMatrixBin.find({binBarcode: "A2_RFID"}).pretty()`
 `db.iMatrixBin.find({binBarcode: "A2_RFID"},{_id:1}).pretty()`
 **Second find argument is PROJECT which is columns to return**
  
-# From compass just get the _id
+## From compass just get the _id
 `FILTER: {binBarcode: "A2_RFID"}`  
 `PROJECT: {_id:1}`
  
@@ -37,7 +38,7 @@ db.iMatrixBin.aggregate( [
 ])
 ```
  
-# Group By Examples
+## Group By Examples
 ### select binBarcode, count(*) from iMatrixBin group by binBarcode
 ```
 db.iMatrixBin.aggregate(
@@ -62,7 +63,7 @@ db.iMatrixBin.aggregate([
 https://docs.mongodb.com/manual/reference/sql-aggregation-comparison/
  
  
-# !!! These are still under investigation !!!
+## !!! These are still under investigation !!!
 ```
 db.iMatrixBin.group(
    {
