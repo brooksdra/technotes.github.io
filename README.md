@@ -1,13 +1,15 @@
 # Main Notes
+- [Bash](bash.md)
 - [Docker](docker.md)
-- [firebase](firebase.md)
-- [git](git.md)
+- [Firebase](firebase.md)
+- [GIT](git.md)
 - [IntelliJ](intelliJ.md)
-- [javascript](javascript.md)
-- [mongodb](mongodb.md)
-- [reactjs](reactjs.md)
-- [springboot](springboot.md)
-- [svn](svn.md)
+- [Javascript](javascript.md)
+- [Mongodb](mongodb.md)
+- [Python](python.md)
+- [Reactjs](reactjs.md)
+- [SpringBoot](springboot.md)
+- [SVN](svn.md)
 
 # Great Resource:
 [cheat sheets](https://cheat.sh) of everything!
