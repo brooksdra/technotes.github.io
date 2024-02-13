@@ -1,6 +1,7 @@
 # Bash
 
 ## Advanced scripts at the bottom
+- [Excel Script](#excel-script-id)
 
 ### COMMAND LINE
 `history | grep stringToFind`            # Lists all commands from history containing stringToFind
@@ -282,18 +283,18 @@ apple banana orange grapes mango
 
 
 ### Process options passed in
-echo "$# options supplied"
-while getopts :u:p:ab option; do    # leading : necessary, trailing colon means values expected
-    case $option in
-        u) user=$OPTARG
-           echo "user: $user";;
-        p) pw=$OPTARG
-           echo "pw: $pw";;
-        a) echo "a flag provided";;
-        b) echo "b flag provided";;
-        ?) echo "unknow arg: $OPTARG";;
-    esac
-done
+    echo "$# options supplied"
+    while getopts :u:p:ab option; do    # leading : necessary, trailing colon means values expected
+        case $option in
+            u) user=$OPTARG
+               echo "user: $user";;
+            p) pw=$OPTARG
+               echo "pw: $pw";;
+            a) echo "a flag provided";;
+            b) echo "b flag provided";;
+            ?) echo "unknow arg: $OPTARG";;
+        esac
+    done
 
 ### Ask for input
     echo "Enter name "
@@ -327,7 +328,7 @@ done
         done
     done
 
-### A script to extract Excel data from a tab delimited file with 
+### A script to extract Excel data from a tab delimited file with {#excel-script-id}
     #!/bin/bash
     
     # pull a list of .log files with a wmem3- name prefix and convert all newlines to a space; for the cat command
