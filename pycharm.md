@@ -4,6 +4,7 @@ Also see IntelliJ notes for more global editor details
 ## Shelf Info
 The Shelf is workspace specific
 Use Settings > Version Control > Shelf to set the directory.
+
 I prefer a centralized place /ProtedyneSuite/charm-resources/shelf
 
 ## Virtual Environment 
