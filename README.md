@@ -6,10 +6,12 @@
 - [IntelliJ](intelliJ.md)
 - [Javascript](javascript.md)
 - [Mongodb](mongodb.md)
+- [PyCharm](pycharm.md)
 - [Python](python.md)
 - [Reactjs](reactjs.md)
 - [SpringBoot](springboot.md)
 - [SVN](svn.md)
+- [WebStorm](webstorm.md)
 
 # Great Resource:
 [cheat sheets](https://cheat.sh) of everything!

@@ -24,6 +24,11 @@ Check for Maven dependency tracking
 IntelliJ has an embedded tutorial which is pretty nice and covers a lot of stuff
 Take a look at this https://www.jetbrains.com/help/idea/migrating-from-eclipse-to-intellij-idea.html
 
+## Shelf Info
+The Shelf is workspace specific
+Use settings > Version Control > Shelf to set the directory.
+I prefer a centralized place /ProtedyneSuite/idea-resources/shelf
+
 ## Editor Settings
 **Allow Mouse font change** 
 To enable/disable the feature, Settings > Editor > General: Change Font size with Ctrl+Mouse Wheel
@@ -155,7 +160,3 @@ That no longer works.
 New:  
     $JAVA_DEBUG_OPTIONS = "-Xdebug", "-Xnoagent", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=$DEBUG_PORT"
 Until the launcher is changed yet again we will not be able to remote debug.  or you can temporarily hack LaunchSystemGroup.ps1 to get it working.
-
-
-
-
