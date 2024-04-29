@@ -155,10 +155,24 @@ MY_MAVEN_OPT AND MAVEN_OPT = -Xms512m -Xmx2048m -XX:MaxMetaspaceSize=512m -Dmave
 IDEA has an "Eclipser" plugin to convert Eclipse launcher configuration into IDEA launchers! Locate launchers in project, open, right click and select Convert with Eclipser. This adds a new launch configuration that is ready to go.
 
 ## For Debugging 
-If not, here is a testing vm args example
+This is a testing vm args example
 ```
 -Dspring.profiles.active=dev -Dlog4j.configurationFile=/pro......Suite/bin/config/Log4j2Configuration.xml -Dlogfilename=SystemTesting
 ```
+
+Sometime SpringBoot applications do not update web pages live. To correct this...
+1) Add the following dependency to the pom.xml and restart the project.
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+</dependency>
+```
+2) Select the following settings:
+- CTRL+ALT+S to open the setting panel
+- Build, Execution, Development > Compiler > Build project automatically.
+- Advanced Setting > Allow auto-make to start even if developed application is currently running. 
+
 ## For Unit Testing
 If not, here is a testing vm args example
 ```
