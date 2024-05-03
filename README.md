@@ -1,5 +1,6 @@
 # Main Notes
 - [Bash](bash.md)
+- [CSS](css.md)
 - [Docker](docker.md)
 - [Firebase](firebase.md)
 - [GIT](git.md)

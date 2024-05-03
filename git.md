@@ -83,7 +83,7 @@ pick 5c67e61 Message for commit #3
 Change 'pick' to dictate how you want to handle the rebase:  
 You can also rewrite commit messages  
 See https://thoughtbot.com/blog/git-interactive-rebase-squash-amend-rewriting-history
-![git-workflow.png](images%2Fgit-workflow.png)
+![git-workflow.png](images/git-workflow.png)
 
 ### How to compare with remote:
 git branch -a      -- to see all of the branches
