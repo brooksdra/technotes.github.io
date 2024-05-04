@@ -17,6 +17,7 @@
 - [Dive deeper into Pseudo Elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)
 
 ## Selectors
+
 | Selector     | Use                  | Description                            |
 |--------------|----------------------|----------------------------------------|
 | element      | element-to-select {} | Direct element selection               |
@@ -27,12 +28,14 @@
 
 
 ## Inheritance 
+
 This means the child elements inherit some styles from its parent element.  
 The *{} doesn't use inheritance, it applies to all elements. It is not performant and has a low priority.  
 Typically you don't use the *{} as it is better to use the body tag.
 Directly selected element have a higher specificity than inheritance.
 
 ## Combinator
+
 | Combinator       | Use                    | Description                                 | Example                                                |
 |------------------|------------------------|---------------------------------------------|--------------------------------------------------------|
 | Descendant       | selector selector {}   | Any descendant of the first selector        | h2 p {}  Any p tag within an h2 tag                    |
@@ -41,21 +44,25 @@ Directly selected element have a higher specificity than inheritance.
 | General Sibling  | selector ~ selector    | Siblings of first selector                  | h2 ~ p {} Any p tags with the same parent as an h2 tag |
 
 ## Box Model
-The box model provides a structure to every element:
-![box-model.png](images/box-model.png)
+
+<img src="images/box-model.png" alt="The box model provides a structure to every element" width="300"/>
+
 
 ### Margin Collapsing: 
+
 1. Overlaps with adjacent siblings so the larger margin wins.
 2. A parent that has children with margins, the top and bottom margin of the parent will collapse with the top of the first child element and the bottom of the second child element.
 3. An element with margin, but without content, height, padding, or borders, will collapse the top and bottom margins into one margin.
 
 ### Box Sizing:
+
 | box-sizing   | When Used?          | Description                                          |
 |--------------|---------------------|------------------------------------------------------|
 | content-box  | default             | Width and Height values direct the content           |
 | border-box   | best option         | Use * { box-sizing: border-box; } to set everywhere. |
 
 ### Display
+
 | display      | When Used?          | Description                                          |
 |--------------|---------------------|------------------------------------------------------|
 | block        | default             | Width and Height values direct the content           |
