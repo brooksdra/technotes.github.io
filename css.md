@@ -73,13 +73,126 @@ Specificity is the algorithm used by browsers to determine the CSS declaration t
 
 - [The display  Property](https://developer.mozilla.org/en-US/docs/Web/CSS/display){:target="_blank"}
 
-| display      | When Used?          | Description                                          |
-|--------------|---------------------|------------------------------------------------------|
-| block        | default             | Width and Height values direct the content           |
-| inline       | best option         | Use * { box-sizing: border-box; } to set everywhere. |
-| inline-block | #id-to-select {}    | Apply to the only element with this id               |
+| display      | When Used?                           | Description                                                                                                                             |
+|--------------|--------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| block        | default for many elements            | Takes the entire width eg. body, sections, etc                                                                                          |
+| inline       | default for paragraph type elements  | Only takes its content width                                                                                                            |
+| inline-block | combines the best of both            | Used when designing more interesting layouts                                                                                            |
+| none         | to control visibility via JavaScript | Removes element form document flow and visibility. Note: Use visibility to hide element but maintain its position in the document flow. |
+ 
+**Block-level elements** are rendered as a block and hence take up all the available horizontal space. You can set margin-top and margin-bottom and two block-level elements will render in two different lines.  
+Some examples are: `<div>` , `<section>` , `<article>` , `<nav>`  but also `<h1>` , `<h2>`  etc and `<p>` .
 
-### Pseudo
+**Inline elements** on the other hand only take up the space they require to fit their content in. Hence two inline-elements will fit into the same line (as long as the combined content doesn't take up the entire space in which case a line break would be added).  
+
+They also use the box-model you learned about but margin-top  and margin-bottom  have no effect on the element. padding-top  and padding-bottom  also have a different effect. They don't push the adjacent content away but they will do so with the element border. You can read more about that behavior in the following article: https://hacks.mozilla.org/2015/03/understanding-inline-box-model/  
+
+Additionally, setting a width  or height  on an inline element also has no effect. The width and height is auto to take as much space as required by the content.  
+
+Logically, this makes sense since you don't want your inline elements to destroy your multi-line text-layout. If you want to do so or need both block-level and inline behavior, you can set display: inline-block  to merge behaviors.  
+
+Some example elements are: `<a>` , `<span>` , `<img>`  
+
+**IMPORTANT NOTE:** When using display: inline-block, the white space in the HTML document will be included as more inline and can take up horizontal space. In this case, the best thing to do is subtract some width from other elements to make up for it.  
+
+### Text Decoration 
+Different element types may add styles to text element like `<a>` makes a link look. To remove these, use:   
+`text-decoration: false;`
+
+### Pseudo classes, pseudo elements, and grouping rules
 
 - [Pseudo Classes on the MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes){:target="_blank"}
 - [Dive deeper into Pseudo Elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements){:target="_blank"}
+
+Pseudo classes (:) let us define a style for a **_special state_** of an element.  
+```
+.someClass a:hover,
+.someClass a:selected {
+    color: white;
+}
+```
+
+Pseudo elements (::) let us define a style for a _**specific part**_ of an element:
+```
+.someClass p::first-letter {
+    color: red;
+    font-size: 40px;
+    font-weight: bold;
+    border-bottom: 2px solid, white;
+}
+```
+
+### :not(selector)
+
+- [:not(pseudo) class:](https://developer.mozilla.org/en-US/docs/Web/CSS/:not){:target="_blank"}
+
+Allows you to select any element that does not fit the criteria.
+```
+a.active {
+    color: blue;
+}
+
+a:not(.active){
+    color: white;
+}
+```
+
+### !important
+
+- [When using !important is the right choice](https://css-tricks.com/when-using-important-is-the-right-choice/){:target="_blank"}
+
+Overwrites specificity for all other selectors (Not a great idea to use this, so use it wisely)
+```
+.someClass {
+    color: white !important;
+}
+```
+### Element Outline
+The outline is an additional border-like thing that show when a particular element is active. This is what happens when 
+you tab around in a document. Note it is not actually part of the document box, and takes no space in the model. To turn it off,
+```
+.button:focus {
+    outline: none;
+}
+```
+
+### Float
+Overwrite the default positioning and push it to the right or left.
+
+ - [More on float:](https://developer.mozilla.org/en-US/docs/Web/CSS/float){:target="_blank"}
+
+Note that float takes the element out of the document flow, which can be troublesome for the following objects. This 
+is also why it isn't used much any more. Flexbox and the like are newer and better alternatives.
+
+To correct the float problem add a similar element after the floated element and clear its floating as follows:
+```
+<div class="clearfix" ></div>
+
+.clearfix {
+    clear: both;
+}
+```
+
+### Element Positioning
+
+- [Positioning theory:](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning){:target="_blank"}
+- [More about the "position" property:](https://developer.mozilla.org/en-US/docs/Web/CSS/position){:target="_blank"}
+- [The z-index:](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index){:target="_blank"}
+- [The Stacking Context:](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context){:target="_blank"}
+- [The "sticky" value and current browser support:](https://caniuse.com/#search=sticky){:target="_blank"}
+
+Postion Properties: top, right, bottom, left, and z-index
+
+| position | Position Context                                 | Description                                                                                                                                             |
+|----------|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| static   | default position in document flow.               | From the position to element has in the document flow. Position properties don't apply                                                                  |
+| fixed    | view port                                        | Takes the element out of the document flow. Becomes an inline-block element. Like a flyover                                                             |
+| absolute | HTML element or closest parent with position set | Takes the element out of the document flow.                                                                                                             |
+| relative | default position in document flow.               | Does not take the element out of the document flow. Positioned from its original position. This is also a way to mark a context for absolute positioning. |
+| sticky   | view port + parent content                       | This is a combination of relative and fixed, the element will move until it hits some boundary and then stops moving.                                   |
+
+Note: adding overflow: hidden to a parent, will hide a child if its position properties take out of the parents boundaries. Think of it as like scrolling.  
+
+Stacking context:
+The order of element display in the order they are written in the document; provided all z-index are zero.
+By adding a position properties to an element, that element then has its own position context and z-index will only work with it children.
