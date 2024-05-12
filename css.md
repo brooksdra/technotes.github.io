@@ -175,13 +175,13 @@ To correct the float problem add a similar element after the floated element and
 
 ### Element Positioning
 
-- [Positioning theory:](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning){:target="_blank"}
-- [More about the "position" property:](https://developer.mozilla.org/en-US/docs/Web/CSS/position){:target="_blank"}
-- [The z-index:](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index){:target="_blank"}
-- [The Stacking Context:](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context){:target="_blank"}
-- [The "sticky" value and current browser support:](https://caniuse.com/#search=sticky){:target="_blank"}
+- [Positioning theory](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning){:target="_blank"}
+- [More about the "position" property](https://developer.mozilla.org/en-US/docs/Web/CSS/position){:target="_blank"}
+- [The z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index){:target="_blank"}
+- [The Stacking Context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context){:target="_blank"}
+- [The "sticky" value and current browser support](https://caniuse.com/#search=sticky){:target="_blank"}
 
-Postion Properties: top, right, bottom, left, and z-index
+Position Properties: top, right, bottom, left, and z-index
 
 | position | Position Context                                 | Description                                                                                                                                             |
 |----------|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -196,3 +196,100 @@ Note: adding overflow: hidden to a parent, will hide a child if its position pro
 Stacking context:
 The order of element display in the order they are written in the document; provided all z-index are zero.
 By adding a position properties to an element, that element then has its own position context and z-index will only work with it children.
+
+### Background Positioning vs. Image Positioning 
+**background-image** is more flexable and shoudl be used if you need such flexibility.  
+**img** is better for simple images that fit into the normal document flow.
+
+- [The background Property](https://developer.mozilla.org/en-US/docs/Web/CSS/background){:target="_blank"}
+- [Styling Images](https://www.w3schools.com/css/css3_images.asp){:target="_blank"}
+- [Filters](https://developer.mozilla.org/en-US/docs/Web/CSS/filter){:target="_blank"}
+- [Styling SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/SVG_and_CSS){:target="_blank"}
+
+**Background property shorthand** is the technique for using one css property for settings.   
+This can get complicated for background setting and is not intuitive as there are many different settings available. 
+**IMPORTANT NOTE** When using specific settings, that eventually cascade over by a shorthand version missing some of the 
+settings, the defaults set by the shorthand will override the previously set values. **IMPORTANT**
+
+```
+    background-image: url("images/freedom.jpg");
+    background-position: left 10% bottom 30%;
+    background-size: cover;    
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-clip: border-box;
+    background-attachment: scroll;
+```
+becomes:
+```
+    background: url("images/freedom.jpg") left 10% bottom 30%/cover no-repeat border-box, #ff1b68;
+```
+
+Notes:  
+```    
+    background-size: Sets the width, and the height is set to maintain the aspect ratio.  
+                     cover: picks 100% either width or height, for best aspect ratio to fill the defined space.
+                     contain: shows full images, maintains aspecpt ratio either side or bottom may show white space.  
+    background-repeat: Repeats the image with some controls no-repeat, or repeat-x, repeat-y.      
+    background-position: x-axis to left edge, y-axis from top.  
+                         using a percent indicates how much will be cropped from left or top.  
+                         center 50% of any extra will be cropped.  
+                         
+    background-origin: border-box: set image under border.
+                       content-box: in content area.
+                       padding-box: fills padding area as well
+    background-clip: same settings as origin
+    background-attachment: sets how the images is attached to the rest of the page
+                           fixed: fixed to the view port so the image scrolls with the page
+                           scroll: images maintains its location and scrolls within its parent
+                           local: images scrolls with content. (sounds like fixed!?!)
+```                   
+
+**Image Positioning**
+- Defaults to image size
+- Select img setting height: means the height of the image?
+- **IMPORTANT NOTE:** height and width will respect parent only if the parent is inline-block (hmmm feels tricky) 
+
+
+### Gradients (linear and radial)
+Gradients are considered images.  
+Control settings like direction, color/colors, transparency, etc.  
+Radial gradients have more options for flexing the radial aspect.
+
+```
+    background-image: linear-gradient(red, blue);
+```
+
+Background images can also be layered with comma separated entries for each layer.  
+In the following example we have three layers, a translucent linear-gradient, over a specifically positioned image, 
+lastly over a solid color.
+
+Note: layering will only accept one solid color layer.
+
+```
+    background: linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent), 
+                url("images/freedom.jpg") left 10% bottom 30%/cover no-repeat border-box, 
+                #ff1b68;
+```
+
+```
+    background: linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent), url("images/freedom.jpg") left 10% bottom 30%/cover no-repeat border-box, #ff1b68;
+```
+### Filters
+Filters are applied over the images, there are many options, look them up!
+```
+div {
+    background-color: red;
+    filter: blur(10px);
+}
+```
+
+### SVG
+SVG is based on HTML code. Look into details outside of this document
+
+
+### Sizing Units
+px, %, em, rem, vw, vh, auto
+
+- [Font size properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size){:target="_blank"}
+- [Viewport units and browser support](https://caniuse.com/#search=vh){:target="_blank"}
