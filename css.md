@@ -287,9 +287,59 @@ div {
 ### SVG
 SVG is based on HTML code. Look into details outside of this document
 
-
-### Sizing Units
-px, %, em, rem, vw, vh, auto
+### Sizing Units (px, %, em, rem, vw, vh, auto)
 
 - [Font size properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size){:target="_blank"}
 - [Viewport units and browser support](https://caniuse.com/#search=vh){:target="_blank"}
+
+<img src="images/css-positioning-rules.png" alt="3 Rules to remember when positioning elements" width="600"/>
+
+#### Where sizing rules apply and make the most sense
+
+<img src="images/css-choosing-units.png" alt="Which units to choose" width="600"/>
+
+#### Absolute Lengths (px, cm, mm)
+The browser will mostly ignore its user settings.  
+There are other measurement based setting like cm, mm, etc. Avoid using these types.  
+
+
+#### Viewport Lengths (%, vw, vh, vmin, vmax)
+These settings are based on some percentage of the size and positioning settings of the containing block.   
+They adjust dynamically based on the current viewport conditions.  
+
+**100vw** refers to 100% of the viewport width.  
+**85vh** refers to 85% of the viewport height.  
+**50vmin** refers to 50% of the smaller length of either viewport width or height.  
+**75vmax** refers to 75% of the larger of the viewports sizes.
+
+
+#### Font-Related Lengths (rem and em)
+These lengths are calculated on the default font size based on the HTML or ROOT element. These also adjust dynamically
+if the user modifies the browser settings.  
+
+**rem**: Fixed to the HTML or ROOT font size. Modify rem at the html element for entire document control.  
+It is a good idea to figure out what 1.0 rem is in px for your development browser and calculate modifications from there.  
+
+**em**: Based on the font sized going up the ancestry line. This can be tricky as the ancestors may have 
+calculations of their own. **Careful!** This is not often used without specific intent!  
+
+#### margin:auto
+**margin:auto** Asks the browser to set the left and right margin evenly to center the element.  
+**IMPORTANT NOTE:** margin:auto only works for block level elements with an explicitly assigned width!
+
+
+### Working with JavaScript and CSS
+
+- [JavaScript Basics](https://academind.com/learn/javascript){:target="_blank"}
+- [JavaScript CSS Styles](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style){:target="_blank"}
+- [ELEMENT.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList){:target="_blank"}
+
+JavaScript can be used to update actual element styles, but it is better to create classes to add/remove from the elements.
+
+Element Examples
+```
+button.style.backgroundImage = 'image.png';    
+button.style['background-image'] = 'image.png';
+button.classList.add('className');
+button.classList.remove('className');
+```
