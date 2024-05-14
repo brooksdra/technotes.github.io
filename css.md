@@ -275,6 +275,7 @@ Note: layering will only accept one solid color layer.
 ```
     background: linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent), url("images/freedom.jpg") left 10% bottom 30%/cover no-repeat border-box, #ff1b68;
 ```
+
 ### Filters
 Filters are applied over the images, there are many options, look them up!
 ```
@@ -350,7 +351,7 @@ button.classList.remove('className');
 </div>
 
 
-#### Meta tags and @Media Queries for Responsive Design
+### Meta tags and @Media Queries for Responsive Design
 
 The viewport meta element is what turns a regular website page into a responsive page, 
 and it's also one of the number one reason for StackOverflow questions on why their media queries are not working.  
@@ -412,3 +413,33 @@ in the .css file in a continuous direction. For mobile first is it from smallest
 @media (min-width: 60rem) {...}
 etc...
 ```
+
+### Styling Inputs
+
+- [Styling Form Elements](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Styling_HTML_forms){:target="_blank"}
+- [Styling a select Element](https://stackoverflow.com/questions/1895476/how-to-style-a-select-dropdown-with-css-only-without-javascript){:target="_blank"}
+
+Input fields typically have many browser default styles, override them for best results.  
+Always include label elements for each input field as this is the now standard.  
+
+There are many ways to select attributes:  
+<img src="images/css-advanced-attribute-selection.png" alt="Advanced Attribute Selection" width="600"/>
+
+This is a good example for styling disabled buttons
+```
+.button[disabled] {
+    cursor: not-allowed;
+    border-color: #a1a1a1;
+    background-color: #ccc;
+    color: #a1a1a1;
+}
+```
+
+Use pseudo selectors when validating form inputs:
+```l
+.signup-form :invalid {
+    border-color: #ff5454 !important;
+    background: #faacac;
+}
+```
+Also notice the space before :invlaid, this is intended and read as all invalid child elements to .singup-form.
