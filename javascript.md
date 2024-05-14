@@ -13,3 +13,19 @@ tasks = […tasks, task4]                                …tasks means all item
 tasks = tasks.map( (task) => task.id === id 
     ? { …task, reminder : !task.reminder }        …task means copy all fields and change reminder
     :  task  
+
+### Working with JavaScript and CSS
+
+- [JavaScript Basics](https://academind.com/learn/javascript){:target="_blank"}
+- [JavaScript CSS Styles](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style){:target="_blank"}
+- [ELEMENT.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList){:target="_blank"}
+
+JavaScript can be used to update actual element styles, but it is better to create classes to add/remove from the elements.
+
+Element Examples
+```
+button.style.backgroundImage = 'image.png';    
+button.style['background-image'] = 'image.png';
+button.classList.add('className');
+button.classList.remove('className');
+```
