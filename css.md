@@ -343,3 +343,72 @@ button.style['background-image'] = 'image.png';
 button.classList.add('className');
 button.classList.remove('className');
 ```
+
+<div style="text-align: center;">
+    <h1>THINK MOBILE FIRST FROM NOW ON</h1>
+    <p>Start by designing the pages for a cell phone sized screen, then use media queries to adjust the styling for larger screens.</p>
+</div>
+
+
+#### Meta tags and @Media Queries for Responsive Design
+
+The viewport meta element is what turns a regular website page into a responsive page, 
+and it's also one of the number one reason for StackOverflow questions on why their media queries are not working.  
+
+- [Absolute lengths on W3.org](https://www.w3.org/TR/css-values-3/#absolute-lengths){:target="_blank"}
+- [Quick meta tag overview](https://ui.dev/rwd/develop/responsive-html/viewport-meta-element){:target="_blank"}
+- [Media queries theory](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries){:target="_blank"}
+- [Applying media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries){:target="_blank"}
+- [Check your current device scale](mydevice.io){:target="_blank"}
+
+Understand the difference between **Hardware Pixels** and **Software Pixels**  
+One example of this is when you see a web page on a cell phone that looks like it should be on a computer.
+Use a **viewport** <meta> tag to tell the browser to set the width of the content to the width of the device itself, 
+and to scale that content to 1 on load.
+
+```
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    where:
+    width=device-width - Aligns HW and SW pixels.
+    inital-scale=1.0 - Think of this as not being zoomed in
+    user-scalable=yes - (default) Allows user to zoom(scale) viewport. DON'T USE!!!
+    minimum-scale=1.2 and maximum-scale=2.0 - puts bounaries on the zoom at 1.2% and 2.0% of scale respectively.
+```
+
+With the viewport set and all styling set for cell phone sized screen, use media queries at the end of
+each style sheet to adjust for when the screen crosses defined pixel boundaries: 
+
+In this example if the screen crosses 40rem (40 * 1rem or in my case 16pixels) apply this set of styles to 
+1) Hide a button, maybe a mobile friendly nav menu
+2) Show a large screen friendly nav menu and adjust its alignment
+3) Reformat the footer for a larger page width
+
+```
+@media (min-width: 40rem) {
+    .toggle-button {
+        display: none;
+    }
+
+    .main-nav {
+        display: inline-block;
+        text-align: right;
+        width: calc(100% - 44px);
+        vertical-align: middle;
+    }
+
+    .main-footer__link {
+        display: inline-block;
+        margin: 0 1rem;
+    }
+}
+```
+
+**ORDER MATTERS!** @media queries must honor CSS cascade theory, so if there are more than two transitions, they must be ordered 
+in the .css file in a continuous direction. For mobile first is it from smallest to largest. 
+
+``` 
+... defaul or no media query
+@media (min-width: 40rem) {...}
+@media (min-width: 60rem) {...}
+etc...
+```
