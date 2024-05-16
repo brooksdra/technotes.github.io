@@ -442,4 +442,103 @@ Use pseudo selectors when validating form inputs:
     background: #faacac;
 }
 ```
-Also notice the space before :invlaid, this is intended and read as all invalid child elements to .singup-form.
+Also notice the space before :invalid, this is intended and read as all invalid descendent elements to .signup-form.
+
+### Text & Fonts
+
+- [Web Safe Fonts](https://www.cssfontstack.com/){:target="_blank"}
+- [Google Fonts](https://fonts.google.com/){:target="_blank"}
+- [The "line-height" property](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height){:target="_blank"}
+
+The browser (user agent) has a default set of font families....
+
+<img src="images/css-generic-font-families.png" alt="Generic Font Families" width="600"/>
+
+And must decide which font is being displayed based on default and css settings...
+
+<img src="images/css-what-font-is-displayed.png" alt="What Font is Displayed?" width="600"/>
+
+**Avoid using local** (user computer based fonts) if possible. Specify and provide the fonts in the project.  
+**Web fonts** are retrieved from the internet by Linking into the header of the page...
+
+```
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    ...
+</head>
+```
+
+Or the preferred method of @importing via the primary global css file...
+
+```
+@import url('https://fonts.googleapis.com/css?family=Anton');               
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');  /* This pulls directlry from google fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,900');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;   /* font family in order of preference */
+  margin: 0;
+}
+```
+
+**Project supplied fonts** are retrieved from google and provided by the project as a resource using @font-face
+
+#### @font-face
+
+Use @font-face to import specific font files...  
+You must specify each file as follows:  
+
+```
+@font-face {
+    font-family: 'AnonymousPro';
+    src: url("anonymousPro-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'AnonymousPro';
+    src: url("anonymousPro-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+```
+#### Font File (Type) Formats
+
+**ttf: True Type Format** is generally available and works well for most cases.  
+**otf: Open Type format** is true type, open supported similar to .ttf
+**woff: Web Open Font Format** is true type, and open, with better compression & better browser support. 
+**woff2** has even better compression but is not yet supported by all browsers, so avoid for now.
+
+#### Font Properties
+
+Fonts properties topic is a big one, much too big for this guide,  
+[This Udemy Course Section is worth the watch](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/learn/lecture/9615478#announcements){:target="_blank"}
+
+Here are a few for example:
+```
+- font-size: 2rem;
+- font-weight: 400;    /* or normal */ this is the default.
+- font-style: italic;  /* NOTE: the browser can sometimes fake italic if it is not provided, it looks different */
+- font-variant: small-caps;
+- font-stretch: ultra-condensed; /* look it up */
+- letter-spacing: 5px; /* the space between letters */
+- white-space: nowrap; /* how to handle white space (normal, nowrap, pre, pre-wrap) pre uses white space from html file */
+- line-weight: 2;      /* this means (font-weight * 2) depending on the font-family */ 
+- text-decoration: underline;  /* underline, overline, lin-through, dotted, color, wavy */
+- text-shadow: x-offset y-offset blur color; 
+```
+
+There are shorthands, look them up!
+```
+    font: style variant weight size/line-height family...
+```
+
+#### Font Display Property
+
+The font display property impacts the loading of font, this has to do with which font is being displayed at which time 
+in the page loading process along with the formula used to decide when to fallback to other choices.
+
+<img src="images/css-font-display-property.png" alt="Using the font-display Property" width="600"/>
