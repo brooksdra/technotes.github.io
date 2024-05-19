@@ -1,5 +1,43 @@
 # CSS
 
+<!-- TOC -->
+* [CSS](#css)
+  * [Important Links](#important-links)
+  * [Selectors](#selectors)
+  * [Inheritance](#inheritance-)
+  * [Specificity](#specificity)
+  * [Combinator](#combinator)
+  * [Box Model](#box-model)
+    * [Margin Collapsing:](#margin-collapsing-)
+    * [Box Sizing:](#box-sizing)
+    * [Display](#display)
+    * [Text Decoration](#text-decoration-)
+    * [Pseudo classes, pseudo elements, and grouping rules](#pseudo-classes-pseudo-elements-and-grouping-rules)
+    * [:not(selector)](#notselector)
+    * [!important](#important)
+    * [Element Outline](#element-outline)
+    * [Float](#float)
+    * [Element Positioning](#element-positioning)
+    * [Background Positioning vs. Image Positioning](#background-positioning-vs-image-positioning-)
+    * [Gradients (linear and radial)](#gradients-linear-and-radial)
+    * [Filters](#filters)
+    * [SVG](#svg)
+    * [Sizing Units (px, %, em, rem, vw, vh, auto)](#sizing-units-px--em-rem-vw-vh-auto)
+      * [Where sizing rules apply and make the most sense](#where-sizing-rules-apply-and-make-the-most-sense)
+      * [Absolute Lengths (px, cm, mm)](#absolute-lengths-px-cm-mm)
+      * [Viewport Lengths (%, vw, vh, vmin, vmax)](#viewport-lengths--vw-vh-vmin-vmax)
+      * [Font-Related Lengths (rem and em)](#font-related-lengths-rem-and-em)
+      * [margin:auto](#marginauto)
+    * [Working with JavaScript and CSS](#working-with-javascript-and-css)
+    * [Meta tags and @Media Queries for Responsive Design](#meta-tags-and-media-queries-for-responsive-design)
+    * [Styling Inputs](#styling-inputs)
+    * [Text & Fonts](#text--fonts)
+      * [@font-face](#font-face)
+      * [Font File (Type) Formats](#font-file-type-formats)
+      * [Font Properties](#font-properties)
+      * [Font Display Property](#font-display-property)
+<!-- TOC -->
+
 ## Important Links
 - [Udemy Complete Guide](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/learn/lecture/9462698?components=add_to_cart%2Cavailable_coupons%2Cbase_purchase_section%2Cbuy_button%2Cbuy_for_team%2Ccacheable_buy_button%2Ccacheable_deal_badge%2Ccacheable_discount_expiration%2Ccacheable_price_text%2Ccacheable_purchase_text%2Ccurated_for_ufb_notice_context%2Ccurriculum_context%2Cdeal_badge%2Cdiscount_expiration%2Cgift_this_course%2Cincentives%2Cinstructor_links%2Clifetime_access_context%2Cmoney_back_guarantee%2Cprice_text%2Cpurchase_tabs_context%2Cpurchase%2Crecommendation%2Credeem_coupon%2Csidebar_container%2Cpurchase_body_container#announcements){:target="_blank"}
 - [World Wide Web Consortium (W3C) CSS Working Groups](https://www.w3.org/TR/tr-groups-all#tr_Cascading_Style_Sheets__CSS__Working_Group){:target="_blank"}

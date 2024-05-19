@@ -1,7 +1,63 @@
 # Bash
 
-## Advanced scripts at the bottom
-- [Excel Script](#excel-script-id)
+<!-- TOC -->
+* [Bash](#bash)
+    * [COMMAND LINE](#command-line)
+    * [HISTORY](#history)
+    * [WSL bash script not working because of /bin/bash^M bad interpreter: No such file or directory](#wsl-bash-script-not-working-because-of-binbashm-bad-interpreter-no-such-file-or-directory)
+    * [Find files by name removing all errors from the output](#find-files-by-name-removing-all-errors-from-the-output)
+    * [Find in file](#find-in-file-)
+    * [Make Putty terminal show host name in window title bar (More BS magic!)](#make-putty-terminal-show-host-name-in-window-title-bar-more-bs-magic)
+    * [SSH and SFTP](#ssh-and-sftp)
+    * [Get a file from /Users/daveb/Documents/test.txt without maintaining a persistent connection](#get-a-file-from-usersdavebdocumentstesttxt-without-maintaining-a-persistent-connection)
+    * [Search files for](#search-files-for)
+    * [Favorite ls setting](#favorite-ls-setting)
+    * [Change Mod](#change-mod)
+    * [Run something behind the scenes (in the background)](#run-something-behind-the-scenes-in-the-background)
+    * [cat Multiple Files](#cat-multiple-files)
+    * [Remove invalid lines with specific text](#remove-invalid-lines-with-specific-text)
+    * [retain invalid lines (not needed)](#retain-invalid-lines-not-needed)
+    * [remove blank lines](#remove-blank-lines)
+    * [Added headers before concatinating the data to it.](#added-headers-before-concatinating-the-data-to-it)
+    * [Count files in a directory](#count-files-in-a-directory)
+    * [List most recent 10 files](#list-most-recent-10-files)
+    * [To get more information from ps](#to-get-more-information-from-ps)
+    * [SSH: How to change the window title to the Host's IP](#ssh-how-to-change-the-window-title-to-the-hosts-ip)
+    * [BS has a file on each device, just source it...](#bs-has-a-file-on-each-device-just-source-it)
+    * [Check Linux version](#check-linux-version)
+    * [Debugging bash script](#debugging-bash-script-)
+    * [Problem with newline conversion](#problem-with-newline-conversion)
+    * [Tail command](#tail-command)
+    * [Hostname](#hostname)
+  * [Shell Scripting](#shell-scripting)
+    * [Builtins](#builtins)
+    * [{…} Brace expansion](#-brace-expansion)
+    * [${…} Parameter expansion](#-parameter-expansion)
+    * [$(...) Command substitution](#-command-substitution)
+    * [$((…)) Arithmetic expansion](#-arithmetic-expansion)
+    * [Tests [ ... ] and](#tests----and-)
+    * [Extended Test [[ ... ]] to test multiple or complex conditions](#extended-test----to-test-multiple-or-complex-conditions)
+    * [Use true and false to force an issue](#use-true-and-false-to-force-an-issue)
+    * [Use +~ to run a regex](#use--to-run-a-regex)
+    * [You can also use ((…)) for testing, see while/until loop below](#you-can-also-use--for-testing-see-whileuntil-loop-below)
+    * [Arrays (limited to one layer deep)](#arrays-limited-to-one-layer-deep)
+    * [bash works with associative arrays; think of map](#bash-works-with-associative-arrays-think-of-map)
+    * [Conditional If statements:](#conditional-if-statements)
+    * [Stylistic choice:](#stylistic-choice)
+    * [While and Until Loops](#while-and-until-loops)
+    * [indexed array](#indexed-array)
+    * [associative array](#associative-array)
+    * [Case Statement](#case-statement)
+    * [Process options passed in](#process-options-passed-in)
+    * [Ask for input](#ask-for-input)
+    * [Ask for option selection, will keep asking till a valid options or quit is provided](#ask-for-option-selection-will-keep-asking-till-a-valid-options-or-quit-is-provided)
+  * [Advanced Scripts](#advanced-scripts)
+    * [A script to extract Excel data from a tab delimited file with {#excel-script-id}](#a-script-to-extract-excel-data-from-a-tab-delimited-file-with-excel-script-id)
+    * [Imaging Controller: How many tests were run or images between each hang/crash:](#imaging-controller-how-many-tests-were-run-or-images-between-each-hangcrash)
+    * [call-many-something.sh](#call-many-somethingsh)
+    * [curl-simple-send.sh](#curl-simple-sendsh)
+    * [curl-many-results.sh](#curl-many-resultssh)
+<!-- TOC -->
 
 ### COMMAND LINE
 `history | grep stringToFind`            # Lists all commands from history containing stringToFind
@@ -25,6 +81,16 @@ Update script to replace newlines for immediate environment…
 ### Find in file 
 `grep  "string" file`  
 `cat file | grep "string"`  
+
+### Make Putty terminal show host name in window title bar (More BS magic!)
+```
+_HNUM=$(hostname | tr -d '[a-z]-')
+export PS1="alpha${_HNUM}$ "
+#export PS1='alpha7$ '
+export HISTSIZE=2000
+unalias ls
+alias retitle="echo -ne '\033]0;'$(hostname):$(ifconfig ethernet0 | grep 'inet ' | awk '{print $2}')'\007'"
+```
 
 ### SSH and SFTP
 `ssh daveb@10.1.10.156 `    "then provide password"  
@@ -57,6 +123,27 @@ This logs into the sftp server at ~ or in this case /Users/daveb
 `./disk-monitor.sh & disown`
 Then, use ctrl-Z if necessary
 
+### cat Multiple Files
+```
+cat wmem3-230327.log wmem3-230328.log wmem3-230329.log wmem3-230330.log > wmem3-combined.txt
+cat wmem3-230329.log > wmem3-combined.txt
+```
+
+### Remove invalid lines with specific text
+```grep -vE "(date|hour|minute|second)" wmem3-combined.txt > wmem3-all-clean1.txt```
+
+### retain invalid lines (not needed)
+```grep -E "(date|hour|minute|second)" wmem3-combined.txt > wmem3-trash.txt```
+
+### remove blank lines
+```grep -ve '^[[:space:]]*$' wmem3-all-clean1.txt > wmem3-all-clean2.txt```
+
+### Added headers before concatinating the data to it.
+```
+echo -e 'date\tkernel\tmemtotal\tmemfree\tmemavail\ttotal\tdatacont\tdatastor\tenvironm\timagingc\tkiosk\tldap\tprocessc\tuserinte\tweston' > wmem3-all.txt
+cat wmem3-all-clean2.txt >> wmem3-all.txt
+```
+
 ### Count files in a directory
 `ls –1 | wc -l`
 
@@ -69,14 +156,13 @@ Then, use ctrl-Z if necessary
 ### SSH: How to change the window title to the Host's IP
     echo -ne '\033]0;10.195.132.57\007'
 
-### BS has a file on each device, just source it something like bs.sh blah blah blah
+### BS has a file on each device, just source it...
     _HNUM=$(hostname | tr -d '[a-z]-')
     export PS1="alpha${_HNUM}$ "
     #export PS1='alpha7$ '
     export HISTSIZE=2000
     unalias ls
     alias retitle="echo -ne '\033]0;'$(hostname):$(ifconfig ethernet0 | grep 'inet ' | awk '{print $2}')'\007'"
-
 
 ### Check Linux version
     uname -r  
@@ -105,6 +191,8 @@ See last 30 ongoing
 
 ### Hostname
 `sudo hostname –v new-host-name`
+
+## Shell Scripting
 
 ### Builtins
 `command –V df`  # To check if it is a program  
@@ -195,12 +283,11 @@ apple banana orange grapes mango
 …  # This includes all indexes, even the ones without values  
 6: mango  
 
-### bash works with associative arrays, think of map
+### bash works with associative arrays; think of map
     declare –A snacks
     snacks[breakfast]=banana
     snacks["lunch time"]=nuts
     Snacks[dinner]="popped corn"
-
 
 ### Conditional If statements:
     If [[ $a>4 ]]
@@ -281,7 +368,6 @@ apple banana orange grapes mango
         *) echo "No match!";;
     esac
 
-
 ### Process options passed in
     echo "$# options supplied"
     while getopts :u:p:ab option; do    # leading : necessary, trailing colon means values expected
@@ -327,6 +413,8 @@ apple banana orange grapes mango
             esac
         done
     done
+
+## Advanced Scripting Examples
 
 ### A script to extract Excel data from a tab delimited file with {#excel-script-id}
     #!/bin/bash
@@ -451,6 +539,3 @@ Slightly different example __main__ is an IC restart, and the number at the left
     done
      
     echo "done"
-
-
-

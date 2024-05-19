@@ -3,7 +3,7 @@
 - [CSS](css.md)
 - [Docker](docker.md)
 - [Firebase](firebase.md)
-- [GIT](git.md)
+- [git](git.md)
 - [IntelliJ](intelliJ.md)
 - [Javascript](javascript.md)
 - [Mongodb](mongodb.md)
