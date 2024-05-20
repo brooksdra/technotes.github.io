@@ -11,32 +11,37 @@
     * [Margin Collapsing:](#margin-collapsing-)
     * [Box Sizing:](#box-sizing)
     * [Display](#display)
-    * [Text Decoration](#text-decoration-)
-    * [Pseudo classes, pseudo elements, and grouping rules](#pseudo-classes-pseudo-elements-and-grouping-rules)
+  * [Text Decoration](#text-decoration-)
+  * [Pseudo classes, pseudo elements, and grouping rules](#pseudo-classes-pseudo-elements-and-grouping-rules)
     * [:not(selector)](#notselector)
     * [!important](#important)
-    * [Element Outline](#element-outline)
-    * [Float](#float)
-    * [Element Positioning](#element-positioning)
+  * [Element Outline](#element-outline)
+  * [Float](#float)
+  * [Element Positioning](#element-positioning)
     * [Background Positioning vs. Image Positioning](#background-positioning-vs-image-positioning-)
-    * [Gradients (linear and radial)](#gradients-linear-and-radial)
-    * [Filters](#filters)
-    * [SVG](#svg)
-    * [Sizing Units (px, %, em, rem, vw, vh, auto)](#sizing-units-px--em-rem-vw-vh-auto)
-      * [Where sizing rules apply and make the most sense](#where-sizing-rules-apply-and-make-the-most-sense)
-      * [Absolute Lengths (px, cm, mm)](#absolute-lengths-px-cm-mm)
-      * [Viewport Lengths (%, vw, vh, vmin, vmax)](#viewport-lengths--vw-vh-vmin-vmax)
-      * [Font-Related Lengths (rem and em)](#font-related-lengths-rem-and-em)
-      * [margin:auto](#marginauto)
-    * [Working with JavaScript and CSS](#working-with-javascript-and-css)
-    * [Meta tags and @Media Queries for Responsive Design](#meta-tags-and-media-queries-for-responsive-design)
-    * [Styling Inputs](#styling-inputs)
-    * [Text & Fonts](#text--fonts)
-      * [@font-face](#font-face)
-      * [Font File (Type) Formats](#font-file-type-formats)
-      * [Font Properties](#font-properties)
-      * [Font Display Property](#font-display-property)
+  * [Gradients (linear and radial)](#gradients-linear-and-radial)
+  * [Filters](#filters)
+  * [SVG](#svg)
+  * [Sizing Units (px, %, em, rem, vw, vh, auto)](#sizing-units-px--em-rem-vw-vh-auto)
+    * [Where sizing rules apply and make the most sense](#where-sizing-rules-apply-and-make-the-most-sense)
+    * [Absolute Lengths (px, cm, mm)](#absolute-lengths-px-cm-mm)
+    * [Viewport Lengths (%, vw, vh, vmin, vmax)](#viewport-lengths--vw-vh-vmin-vmax)
+    * [Font-Related Lengths (rem and em)](#font-related-lengths-rem-and-em)
+    * [margin:auto](#marginauto)
+  * [Working with JavaScript and CSS](#working-with-javascript-and-css)
+  * [Meta tags and @Media Queries for Responsive Design](#meta-tags-and-media-queries-for-responsive-design)
+  * [Styling Inputs](#styling-inputs)
+  * [Text & Fonts](#text--fonts)
+    * [@font-face](#font-face)
+    * [Font File (Type) Formats](#font-file-type-formats)
+    * [Font Properties](#font-properties)
+    * [Font Display Property](#font-display-property)
+  * [Flexbox](#flexbox)
+    * [Flex Containers](#flex-containers)
+  * [Main Axis vs. Cross Axis](#main-axis-vs-cross-axis)
+    * [Flex Items](#flex-items)
 <!-- TOC -->
+
 
 ## Important Links
 - [Udemy Complete Guide](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/learn/lecture/9462698?components=add_to_cart%2Cavailable_coupons%2Cbase_purchase_section%2Cbuy_button%2Cbuy_for_team%2Ccacheable_buy_button%2Ccacheable_deal_badge%2Ccacheable_discount_expiration%2Ccacheable_price_text%2Ccacheable_purchase_text%2Ccurated_for_ufb_notice_context%2Ccurriculum_context%2Cdeal_badge%2Cdiscount_expiration%2Cgift_this_course%2Cincentives%2Cinstructor_links%2Clifetime_access_context%2Cmoney_back_guarantee%2Cprice_text%2Cpurchase_tabs_context%2Cpurchase%2Crecommendation%2Credeem_coupon%2Csidebar_container%2Cpurchase_body_container#announcements){:target="_blank"}
@@ -133,11 +138,11 @@ Some example elements are: `<a>` , `<span>` , `<img>`
 
 **IMPORTANT NOTE:** When using display: inline-block, the white space in the HTML document will be included as more inline and can take up horizontal space. In this case, the best thing to do is subtract some width from other elements to make up for it.  
 
-### Text Decoration 
+## Text Decoration 
 Different element types may add styles to text element like `<a>` makes a link look. To remove these, use:   
 `text-decoration: false;`
 
-### Pseudo classes, pseudo elements, and grouping rules
+## Pseudo classes, pseudo elements, and grouping rules
 
 - [Pseudo Classes on the MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes){:target="_blank"}
 - [Dive deeper into Pseudo Elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements){:target="_blank"}
@@ -185,7 +190,8 @@ Overwrites specificity for all other selectors (Not a great idea to use this, so
     color: white !important;
 }
 ```
-### Element Outline
+
+## Element Outline
 The outline is an additional border-like thing that show when a particular element is active. This is what happens when 
 you tab around in a document. Note it is not actually part of the document box, and takes no space in the model. To turn it off,
 ```
@@ -194,7 +200,7 @@ you tab around in a document. Note it is not actually part of the document box, 
 }
 ```
 
-### Float
+## Float
 Overwrite the default positioning and push it to the right or left.
 
  - [More on float:](https://developer.mozilla.org/en-US/docs/Web/CSS/float){:target="_blank"}
@@ -211,7 +217,7 @@ To correct the float problem add a similar element after the floated element and
 }
 ```
 
-### Element Positioning
+## Element Positioning
 
 - [Positioning theory](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning){:target="_blank"}
 - [More about the "position" property](https://developer.mozilla.org/en-US/docs/Web/CSS/position){:target="_blank"}
@@ -235,8 +241,11 @@ Stacking context:
 The order of element display in the order they are written in the document; provided all z-index are zero.
 By adding a position properties to an element, that element then has its own position context and z-index will only work with it children.
 
+**Important Note:** Z-Index only effects with position properties set to something other than static (default). This 
+doesn't apply to flex items. That is, you don't need a position property on a flex container to set the z-index.
+
 ### Background Positioning vs. Image Positioning 
-**background-image** is more flexable and shoudl be used if you need such flexibility.  
+**background-image** is more flexable and should be used if you need such flexibility.  
 **img** is better for simple images that fit into the normal document flow.
 
 - [The background Property](https://developer.mozilla.org/en-US/docs/Web/CSS/background){:target="_blank"}
@@ -289,7 +298,7 @@ Notes:
 - **IMPORTANT NOTE:** height and width will respect parent only if the parent is inline-block (hmmm feels tricky) 
 
 
-### Gradients (linear and radial)
+## Gradients (linear and radial)
 Gradients are considered images.  
 Control settings like direction, color/colors, transparency, etc.  
 Radial gradients have more options for flexing the radial aspect.
@@ -314,7 +323,7 @@ Note: layering will only accept one solid color layer.
     background: linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent), url("images/freedom.jpg") left 10% bottom 30%/cover no-repeat border-box, #ff1b68;
 ```
 
-### Filters
+## Filters
 Filters are applied over the images, there are many options, look them up!
 ```
 div {
@@ -323,26 +332,26 @@ div {
 }
 ```
 
-### SVG
+## SVG
 SVG is based on HTML code. Look into details outside of this document
 
-### Sizing Units (px, %, em, rem, vw, vh, auto)
+## Sizing Units (px, %, em, rem, vw, vh, auto)
 
 - [Font size properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size){:target="_blank"}
 - [Viewport units and browser support](https://caniuse.com/#search=vh){:target="_blank"}
 
 <img src="images/css-positioning-rules.png" alt="3 Rules to remember when positioning elements" width="600"/>
 
-#### Where sizing rules apply and make the most sense
+### Where sizing rules apply and make the most sense
 
 <img src="images/css-choosing-units.png" alt="Which units to choose" width="600"/>
 
-#### Absolute Lengths (px, cm, mm)
+### Absolute Lengths (px, cm, mm)
 The browser will mostly ignore its user settings.  
 There are other measurement based setting like cm, mm, etc. Avoid using these types.  
 
 
-#### Viewport Lengths (%, vw, vh, vmin, vmax)
+### Viewport Lengths (%, vw, vh, vmin, vmax)
 These settings are based on some percentage of the size and positioning settings of the containing block.   
 They adjust dynamically based on the current viewport conditions.  
 
@@ -352,7 +361,7 @@ They adjust dynamically based on the current viewport conditions.
 **75vmax** refers to 75% of the larger of the viewports sizes.
 
 
-#### Font-Related Lengths (rem and em)
+### Font-Related Lengths (rem and em)
 These lengths are calculated on the default font size based on the HTML or ROOT element. These also adjust dynamically
 if the user modifies the browser settings.  
 
@@ -362,12 +371,12 @@ It is a good idea to figure out what 1.0 rem is in px for your development brows
 **em**: Based on the font sized going up the ancestry line. This can be tricky as the ancestors may have 
 calculations of their own. **Careful!** This is not often used without specific intent!  
 
-#### margin:auto
+### margin:auto
 **margin:auto** Asks the browser to set the left and right margin evenly to center the element.  
 **IMPORTANT NOTE:** margin:auto only works for block level elements with an explicitly assigned width!
 
 
-### Working with JavaScript and CSS
+## Working with JavaScript and CSS
 
 - [JavaScript Basics](https://academind.com/learn/javascript){:target="_blank"}
 - [JavaScript CSS Styles](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style){:target="_blank"}
@@ -389,7 +398,7 @@ button.classList.remove('className');
 </div>
 
 
-### Meta tags and @Media Queries for Responsive Design
+## Meta tags and @Media Queries for Responsive Design
 
 The viewport meta element is what turns a regular website page into a responsive page, 
 and it's also one of the number one reason for StackOverflow questions on why their media queries are not working.  
@@ -452,7 +461,7 @@ in the .css file in a continuous direction. For mobile first is it from smallest
 etc...
 ```
 
-### Styling Inputs
+## Styling Inputs
 
 - [Styling Form Elements](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Styling_HTML_forms){:target="_blank"}
 - [Styling a select Element](https://stackoverflow.com/questions/1895476/how-to-style-a-select-dropdown-with-css-only-without-javascript){:target="_blank"}
@@ -482,7 +491,7 @@ Use pseudo selectors when validating form inputs:
 ```
 Also notice the space before :invalid, this is intended and read as all invalid descendent elements to .signup-form.
 
-### Text & Fonts
+## Text & Fonts
 
 - [Web Safe Fonts](https://www.cssfontstack.com/){:target="_blank"}
 - [Google Fonts](https://fonts.google.com/){:target="_blank"}
@@ -526,7 +535,7 @@ body {
 
 **Project supplied fonts** are retrieved from google and provided by the project as a resource using @font-face
 
-#### @font-face
+### @font-face
 
 Use @font-face to import specific font files...  
 You must specify each file as follows:  
@@ -543,14 +552,14 @@ You must specify each file as follows:
     font-weight: bold;
 }
 ```
-#### Font File (Type) Formats
+### Font File (Type) Formats
 
 **ttf: True Type Format** is generally available and works well for most cases.  
 **otf: Open Type format** is true type, open supported similar to .ttf
 **woff: Web Open Font Format** is true type, and open, with better compression & better browser support. 
 **woff2** has even better compression but is not yet supported by all browsers, so avoid for now.
 
-#### Font Properties
+### Font Properties
 
 Fonts properties topic is a big one, much too big for this guide,  
 [This Udemy Course Section is worth the watch](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/learn/lecture/9615478#announcements){:target="_blank"}
@@ -574,9 +583,72 @@ There are shorthands, look them up!
     font: style variant weight size/line-height family...
 ```
 
-#### Font Display Property
+### Font Display Property
 
 The font display property impacts the loading of font, this has to do with which font is being displayed at which time 
 in the page loading process along with the formula used to decide when to fallback to other choices.
 
 <img src="images/css-font-display-property.png" alt="Using the font-display Property" width="600"/>
+
+## Flexbox
+
+- [Flexbox and browser compatibility](https://caniuse.com/#search=flexbox){:target="_blank"}
+- [The theory behind flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox){:target="_blank"}
+- [The flex container with live demo](https://developer.mozilla.org/en-US/docs/Glossary/Flex_Container){:target="_blank"}
+
+Flexbox is made up of **Flex Containers** and **Flex Items**.  
+A Flexbox container can be nested into parent Flexbox container.
+
+### Flex Containers
+```
+.your-flex-container {
+  display: flex;                                                          /* Turn any element into a flex box */
+  flex-direction: row (default) | row-reverse | column | column-revers;   /* Direction of the item flow */
+  flex-wrap: nowrap (default) | wrap | wrap-reverse;                      /* Wrap behavior */
+  /* shorthand */
+  flex-flow: direction wrap;  /* It is better to just specify these settings */
+}
+```
+A flex container marks the space the flex items will work with. The default idea is that the items will attempt to fill 
+that space. The fewer sizing properties provided, the more flex-box tries to fill that space. For instance:
+
+- Rows will take the height of the larges item, and all non-restricted items will also take that height.
+- Column works sort of as if all the items are block level elements, it will fill as much width as the space provided. 
+- Once you add alignment or size properties, the behavior reacts accordingly and interestingly.
+
+When thinking about the flex-direction and wrap, as well as aligning and box positioning, it is very important to think
+about the Main Axis vs. the Cross Axis. The following settings are based on the axis:
+
+**align-items:**      Sets the align-self value on all **direct children** as a group. In Flexbox, it controls the alignment of items on the **CROSS Axis**.  
+**justify-items:**    Defines the default justify-self for all items of the flexbox, giving them all a default way of justifying each box along the **appropriate axis**.  
+**justify-content:**  Defines how the browser distributes space between and around content items along the **MAIN axis** of a flex container.  
+**align-content:**    Sets the distribution of space between and around content items along a flexbox's **CROSS axis**.  
+
+### Main Axis vs. Cross Axis
+<img src="images/flex-main-axis-vs-cross-axis.png" alt="Main Axis vs. Cross Axis" width="600"/>
+
+```
+.your-flex-container {
+  display: flex;                                                          /* Turn any element into a flex box */
+  flex-direction: row (default) | row-reverse | column | column-revers;   /* Direction of the item flow */
+  flex-wrap: nowrap (default) | wrap | wrap-reverse;                      /* Wrap behavior */
+  
+  align-items: 
+  /* The default depends on */
+}
+```
+
+### Flex Items
+
+**align-self:** Overrides a flex item's align-items value. In Flexbox, it aligns the item on the **CROSS axis**.  
+**justify-self:** Sets the way a box is justified inside its alignment container along the **appropriate axis**.  
+
+**flex-grow:** values 1, 2, 4, 100... Place on flex items to grow into available space. Add the property values together
+to identify the entire space, then divide that space based on the distribution of the values assigned to each item. If
+only one element has a flex-grow property, then it will take all the available space.
+
+**flex-shrink:** Sets the flex shrink factor of a flex item. If the size of all flex items is larger than the flex container, 
+items shrink to fit according to flex-shrink. See flex-grow for distribution model.
+
+**order:** sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending 
+order value and then by their source code order. Items not given an explicit order value are assigned the default value of 0.
