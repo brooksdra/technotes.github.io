@@ -38,7 +38,7 @@
     * [Font Display Property](#font-display-property)
   * [Flexbox](#flexbox)
     * [Flex Containers](#flex-containers)
-  * [Main Axis vs. Cross Axis](#main-axis-vs-cross-axis)
+    * [Main Axis vs. Cross Axis](#main-axis-vs-cross-axis)
     * [Flex Items](#flex-items)
 <!-- TOC -->
 
