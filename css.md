@@ -650,5 +650,8 @@ only one element has a flex-grow property, then it will take all the available s
 **flex-shrink:** Sets the flex shrink factor of a flex item. If the size of all flex items is larger than the flex container, 
 items shrink to fit according to flex-shrink. See flex-grow for distribution model.
 
+**flex-basis:** Sets the initial main size of a flex item. It sets the size of the content box unless otherwise set with box-sizing.
+This overwrites the width setting. Always refers to the **MAIN Axis**, and only applies to flex items.  
+
 **order:** sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending 
 order value and then by their source code order. Items not given an explicit order value are assigned the default value of 0.
