@@ -655,3 +655,80 @@ This overwrites the width setting. Always refers to the **MAIN Axis**, and only 
 
 **order:** sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending 
 order value and then by their source code order. Items not given an explicit order value are assigned the default value of 0.
+
+
+## CSS Grid
+
+- [A really great article series on the CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout){:target="_blank"}
+- [A complete guide to CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/){:target="_blank"}
+
+
+CSS Grid is an extremely flexible method for layout an entire page.
+
+The simplest way to use it is to define the columns and rows and then a grid template area that looks like a 
+set table of named cells. I'm including only this example and suggesting research for the more sophisticated configuration.
+```
+body {
+  background-color: gray;
+  height: 100%;
+  display: grid;
+  grid-gap: 10px; /* a gap between all grid cells */
+  grid-template-columns: 1fr 3fr;                 /* 2 columns divided amongst 4 frames */
+  grid-template-rows: 50px auto 50px;             /* 3 rows with fixed top and bottom and flexable middle */ 
+  grid-template-areas: "header  header header"    /* Think of this as top row with 3 cells */
+                       "sidebar main   main"      /* The flexible main with a sidebar taking only the first frame */
+                       "footer  footer footer";   /* The bottom row taking all three of the bottom cells */
+  margin: 0;
+}
+
+.header {
+    grid-area: header;                            /* This tells the header class to take up all blocks marked header in the container. */
+    text-align: center;
+    background-color: blue;
+    color: white;
+}
+
+.sidebar {
+    grid-area: sidebar;                           /* This tells the sidebar class to take up all blocks marked sidebar in the container. */
+    text-align: center;
+    background-color: green;
+    color: white;
+
+}
+
+.main {
+    grid-area: main;                              /* This tells the main class to take up all blocks marked main in the container. */
+    text-align: center;
+    background-color: red;
+    color: white;
+}
+
+.footer {
+    grid-area: footer;                            /* This tells the footer class to take up all blocks marked footer in the container. */
+    text-align: center;
+    background-color: purple;
+    color: white;
+}
+```
+
+Note that elements default to filling the entire cell(s) defined for that (stretch).
+Use the element positioning properties to modify that:
+
+justify-items: center; centers the element within its area relative to the ROWS.
+               start; Moves the element to the start of the ROW area.
+               end; Moves the element to the end of the ROW area.
+
+align-items: center; centers the element within its area relative to the COLUMNS.
+             start; Moves the element to the start of the COLUMNS area.
+             end; Moves the element to the end of the COLUMNS area.
+
+justify-content: center; positions the entire grid on the x-axis of its container.
+align-content: center; positions the entire grid on the y-axis of its container.
+
+justify-self: center; positions the element content in the center of its area along the x-axis.
+align-self: center; positions the element content in the center of its area along the y-axis.
+
+
+Elements not part of the document flow (position=fixed) are not part of the grid.
+So, in the case of having the header stay at the top of the view area while scrolling, that is done with a fix postion,
+and thus takes it out of the document flow and grid.
