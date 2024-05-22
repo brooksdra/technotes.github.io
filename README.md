@@ -10,6 +10,7 @@
 - [PyCharm](pycharm.md)
 - [Python](python.md)
 - [Reactjs](reactjs.md)
+- [RegEx](regex.md)
 - [SpringBoot](springboot.md)
 - [SVN](svn.md)
 - [WebStorm](webstorm.md)
