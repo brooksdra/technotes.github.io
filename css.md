@@ -732,3 +732,40 @@ align-self: center; positions the element content in the center of its area alon
 Elements not part of the document flow (position=fixed) are not part of the grid.
 So, in the case of having the header stay at the top of the view area while scrolling, that is done with a fix postion,
 and thus takes it out of the document flow and grid.
+
+## Transform
+
+- [CSS Transforms](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transforms/Using_CSS_transforms){:target="_blank"}
+- [3D Transforms](https://desandro.github.io/3dtransforms/){:target="_blank"}
+
+CSS transforms leverage hardware acceleration, and are performant.  
+```
+transform: rotateX(10deg); Rotate around the X axis
+transform: rotateY(10deg); Rotate around the Y axis
+transform-origin: center;  Point that element rotates around.
+transform: translateX(1rem); The distance to move along the X axis; honoring any existing rotation.
+transform: translateY(1rem); The distance to move along the Y axis; honoring any existing rotation.
+transform: skew(1deg); Think of pulling on one corner to make a parallelagram. Degrees of growing angle.
+transform: scale(2 2): Scales an element to it's parent. In this case 2 is twice the normal size in X and Y direction.
+
+```
+
+
+### 3D
+CSS transform into the 3D perspective all occurs along the Z axis.
+
+```
+transform: rotateZ(10deg); Rotates around the Z axis which has can be thought of as into and out of the view port.
+perspective: 1; Distance of the object from the viewer. 1 is closer and larger moves away.
+perspective-origin: center; The angle from the viewer.
+```
+
+If you rotate the container by 90deg, everything will disappear. That is because the default style is flat!
+```
+transform-style: flat; To prserve object in 3D, change to preserve-3d
+```
+
+Lastly when elements rotate along any axis, we have the ability to show or hide the back of the element.
+```
+backface-visibility: visible;  or hidden
+```
