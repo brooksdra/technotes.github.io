@@ -769,3 +769,109 @@ Lastly when elements rotate along any axis, we have the ability to show or hide 
 ```
 backface-visibility: visible;  or hidden
 ```
+
+### Timing Functions
+
+- (CSS Timing Functions)[https://easings.net/]
+
+### Transitions 
+
+- [CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions){:target="_blank"}
+- [CSS Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations){:target="_blank"}
+- [List of "transitionable" Properties](https://www.w3.org/TR/css-transitions-1/#animatable-properties){:target="_blank"}
+
+Moving or changing element properties about the page.  
+Transitions can affect many properties.  
+A transition property on an element describes a transition form original defaults to the described transition.  
+Adding a class with more transitions after the fact, activates a new transition from its current state again to the 
+state of the described transition.
+
+Removing a class with a transition reverses out that transition!
+
+**Transition has 4 properties:**  
+transition-property e.g. opacity, tranforms, rotateX, etc.
+transition-duration How long to perform the transition
+transition-timing function This is a timing profile to how fast or slow thing happen during the transition (interesting)
+transition-delay When to actually start the transition.
+```
+  transition: opacity 200ms linear 1s;
+```
+Add a transition to a class to apply that transition to any element with that class.  
+For instance, if you have a model dialog that starts out invisible and 3 rems higher on the page:
+```
+.modal {
+  position: fixed;
+  opacity: 0;
+  transform: translateY(-3rem);
+  transition: opacity 200ms linear;
+}
+```
+And you want the dialog to slowly appear while sliding down into position when the open class is applied:
+```
+.open {
+  display: block !important;
+  opacity: 1 !important;
+  transform: translateX(0)  !important;
+  transition: transform 1s linear;
+}
+```
+Because the .modal is translated up -3rem when initially loaded, it will transform the translatedY(0) when the .open class
+is applied. IMPORTANT NOTE: we do not see a translateY(0) in the .open class, but it is applied by default.  
+Also notice the transition property which tells the transform to span 1s with a linear pattern. See CSS Timing Functions link above 
+for more timing functions that you will ever know what to do with.  
+Chrome has a great timing function design tool in its developer panel.
+
+**IMPORTANT NOTE:**   
+Transition are omitted from classes including the **display none or block** properties. 
+If you need to do this, you must use Javascript first change the display variable and then a short setTimeout to apply the transition class;
+or the other way around depending on the transition you are looking for. Also, when running an transition prior to setting diplay=none, you 
+must make sure the setTimeout is just as long as the transition duration!
+
+
+## Animations
+Consider these as CSS Transitions++.  
+Construct a pattern of transitions at the desired percentages, then use the animation property to describe the running of the keyframes:
+
+In this case we start at the default position (0), then take the first 50% of the time to transform to the (-10deg) position and 
+the last 50% to transition to the (10deg) position. This is the effect the "wiggle" keyframes dictates.
+```
+@keyframes  wiggle {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: rotateZ(-10deg);
+  }
+  100% {
+    transform: rotateZ(10deg);
+  }
+}
+```
+
+The following runs each pass of the wiggle animation smoothly along 200ms, but doesn't start till 1s after the page is loaded,
+It run through the entire keyframe set 8 times and finishes in the original position.
+
+Note: you can also specify which keyframe is the original position and which is the final position.
+```
+.main-nav__item--cta {
+  /*         name   duration delay iteration final postion */
+  animation: wiggle 200ms    1s    8         none;
+}
+```
+
+You can also use JavaScript to listen to three different animation events:
+```
+const ctaButton = document.querySelector(".main-nav__item--cta");
+
+ctaButton.addEventListener("animationstart", function() {
+  console.log("cta button animationstart");
+})
+
+ctaButton.addEventListener("animationiteration", function() {
+   console.log("cta button animationiteration");
+})
+
+ctaButton.addEventListener("animationend", function() {
+  console.log("cta button animationend");
+})
+```
