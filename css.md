@@ -40,6 +40,18 @@
     * [Flex Containers](#flex-containers)
     * [Main Axis vs. Cross Axis](#main-axis-vs-cross-axis)
     * [Flex Items](#flex-items)
+  * [CSS Grid](#css-grid)
+  * [Transform](#transform)
+    * [3D](#3d)
+    * [Timing Functions](#timing-functions)
+    * [Transitions](#transitions-)
+    * [Animations](#animations)
+  * [Writing Future-Proof CSS Code](#writing-future-proof-css-code)
+    * [CSS Variables](#css-variables)
+    * [Vendor Prefix](#vendor-prefix)
+    * [@supports](#supports)
+    * [Polyfills](#polyfills)
+    * [Vanilla CSS vs. CSS Frameworks](#vanilla-css-vs-css-frameworks)
 <!-- TOC -->
 
 
@@ -59,6 +71,7 @@
 | id           | #id-to-select {}     | Apply to the only element with this id | 
 | all elements | * {}                 | Apply  to all elements (rarely used)   |
 | attribute    | [attr-to-select] {}  | Apply  to all elements (rarely used)   |
+| root         | :root {}             | Selects the ENTIRE document            |
 
 
 ## Inheritance 
@@ -91,7 +104,7 @@ Specificity is the algorithm used by browsers to determine the CSS declaration t
 
 - [CSS Box Model](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Box_model){:target="_blank"}
 
-<img src="images/box-model.png" alt="The box model provides a structure to every element" width="300"/>
+<img src="images/css-box-model.png" alt="The box model provides a structure to every element" width="300"/>
 
 
 ### Margin Collapsing: 
@@ -625,7 +638,7 @@ about the Main Axis vs. the Cross Axis. The following settings are based on the 
 **align-content:**    Sets the distribution of space between and around content items along a flexbox's **CROSS axis**.  
 
 ### Main Axis vs. Cross Axis
-<img src="images/flex-main-axis-vs-cross-axis.png" alt="Main Axis vs. Cross Axis" width="600"/>
+<img src="images/css-flex-main-axis-vs-cross-axis.png" alt="Main Axis vs. Cross Axis" width="600"/>
 
 ```
 .your-flex-container {
@@ -828,7 +841,7 @@ or the other way around depending on the transition you are looking for. Also, w
 must make sure the setTimeout is just as long as the transition duration!
 
 
-## Animations
+### Animations
 Consider these as CSS Transitions++.  
 Construct a pattern of transitions at the desired percentages, then use the animation property to describe the running of the keyframes:
 
@@ -875,3 +888,91 @@ ctaButton.addEventListener("animationend", function() {
   console.log("cta button animationend");
 })
 ```
+
+## Writing Future-Proof CSS Code
+
+- [CSS Modules & Working Groups](https://www.w3.org/TR/tr-groups-all#tr_Cascading_Style_Sheets__CSS__Working_Group){:target="_blank"}   
+- [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables){:target="_blank"}   
+- [Vendor Prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix){:target="_blank"}   
+- [Which Vendor Prefixes should you use?](http://shouldiprefix.com/){:target="_blank"}   
+- [@supports](https://developer.mozilla.org/en-US/docs/Web/CSS/%40supports){:target="_blank"}   
+- [BEM in Detail](http://getbem.com/introduction/){:target="_blank"}   
+- [An introduction to Bootstrap 4](https://academind.com/learn/css/bootstrap-4-tutorial/){:target="_blank"}   
+- [CSS Polyfills](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills){:target="_blank"}   
+
+### CSS Variables
+
+Assign variables that can be used in the entire document.  
+The best practice is to define the CSS variables at the root of the document...
+
+```
+:root {
+  --dark-green: #0e4f1f;
+  --highlight-color: #ff1b68;
+}
+```
+
+And then refer to those CSS variables throughout the entire project.  
+Note: When defining CSS variables in the project, you can count on the being there, in the case where those variables 
+are being supplied by a third party package, it is standard practice to provide a fallback variable value.
+```
+mobile-nav__item a {
+  text-decoration: none;
+  color: var(--dark-green);
+  color: var(--third-party-dark-green, #0e4f1f);
+  font-weight: bold;
+  padding: 0.2rem 0;
+}
+```
+
+### Vendor Prefix
+
+Vendor Prefix is a way for the different browser vendors support new suggested updates without breaking things when
+the official specification comes out. A vendor starts with a prefixed CSS property name until the finalized specificaiion 
+or implementation is released.
+
+```
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+```
+
+Note: the CSS property is shown several times. **Order is important** here as the browser apply the properties as it encounters them 
+and only applies the ones it understands.
+
+### @supports
+
+Used to isolate properties based on when a different given property is supported.
+
+```
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 3.5rem;
+}
+
+@supports (display: grid) {
+  body {
+    grid-template-rows: 3.5rem auto fit-content(8rem);
+    grid-template-areas: "header"
+    "main"
+    "footer";
+    padding-top: 0;
+    height: 100%;
+  }
+}
+```
+
+@supports can have multiple criteria using **'and'**, **'or'**, and **'and not'**.
+
+### Polyfills
+
+Polyfills are a JavaScript package which enables certain CSS features in a browser which would not support it otherwise.
+
+Polyfills do come at a cost as they need to be downloaded and run on the clients side.
+
+### Vanilla CSS vs. CSS Frameworks
+<img src="images/css-vanilla-css-vs-frameworks.png" alt="Vanilla CSS vs. CSS Frameworks" width="600"/>
