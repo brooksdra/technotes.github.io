@@ -52,13 +52,14 @@
     * [@supports](#supports)
     * [Polyfills](#polyfills)
     * [Vanilla CSS vs. CSS Frameworks](#vanilla-css-vs-css-frameworks)
+  * [Sass](#sass)
 <!-- TOC -->
 
 
 ## Important Links
 - [Udemy Complete Guide](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/learn/lecture/9462698?components=add_to_cart%2Cavailable_coupons%2Cbase_purchase_section%2Cbuy_button%2Cbuy_for_team%2Ccacheable_buy_button%2Ccacheable_deal_badge%2Ccacheable_discount_expiration%2Ccacheable_price_text%2Ccacheable_purchase_text%2Ccurated_for_ufb_notice_context%2Ccurriculum_context%2Cdeal_badge%2Cdiscount_expiration%2Cgift_this_course%2Cincentives%2Cinstructor_links%2Clifetime_access_context%2Cmoney_back_guarantee%2Cprice_text%2Cpurchase_tabs_context%2Cpurchase%2Crecommendation%2Credeem_coupon%2Csidebar_container%2Cpurchase_body_container#announcements){:target="_blank"}
 - [World Wide Web Consortium (W3C) CSS Working Groups](https://www.w3.org/TR/tr-groups-all#tr_Cascading_Style_Sheets__CSS__Working_Group){:target="_blank"}
-- [Complete MDN CSS Reference (Don't learn this by heart!)](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference){:target="_blank"}
+- [Complete MDN CSS Reference Document (Don't learn this by heart!)](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference){:target="_blank"}
 - [Do you prefer reading? Find written CSS docs on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS){:target="_blank"}
 - [Common CSS Properties Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference){:target="_blank"}
 
@@ -137,11 +138,11 @@ Specificity is the algorithm used by browsers to determine the CSS declaration t
 | none         | to control visibility via JavaScript | Removes element form document flow and visibility. Note: Use visibility to hide element but maintain its position in the document flow. |
  
 **Block-level elements** are rendered as a block and hence take up all the available horizontal space. You can set margin-top and margin-bottom and two block-level elements will render in two different lines.  
-Some examples are: `<div>` , `<section>` , `<article>` , `<nav>`  but also `<h1>` , `<h2>`  etc and `<p>` .
+Some examples are: `<div>` , `<section>` , `<article>` , `<nav>`  but also `<h1>` , `<h2>`  etc. and `<p>` .
 
-**Inline elements** on the other hand only take up the space they require to fit their content in. Hence two inline-elements will fit into the same line (as long as the combined content doesn't take up the entire space in which case a line break would be added).  
+**Inline elements** on the other hand only take up the space they require to fit their content in. Hence, two inline-elements will fit into the same line (as long as the combined content doesn't take up the entire space in which case a line break would be added).  
 
-They also use the box-model you learned about but margin-top  and margin-bottom  have no effect on the element. padding-top  and padding-bottom  also have a different effect. They don't push the adjacent content away but they will do so with the element border. You can read more about that behavior in the following article: https://hacks.mozilla.org/2015/03/understanding-inline-box-model/  
+They also use the box-model you learned about but margin-top  and margin-bottom  have no effect on the element. padding-top  and padding-bottom  also have a different effect. They don't push the adjacent content away, but they will do so with the element border. You can read more about that behavior in the following article: https://hacks.mozilla.org/2015/03/understanding-inline-box-model/  
 
 Additionally, setting a width  or height  on an inline element also has no effect. The width and height is auto to take as much space as required by the content.  
 
@@ -160,7 +161,7 @@ Different element types may add styles to text element like `<a>` makes a link l
 - [Pseudo Classes on the MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes){:target="_blank"}
 - [Dive deeper into Pseudo Elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements){:target="_blank"}
 
-Pseudo classes (:) let us define a style for a **_special state_** of an element.  
+Pseudo classes "**:**" let us define a style for a **_special state_** of an element.  
 ```
 .someClass a:hover,
 .someClass a:selected {
@@ -168,7 +169,7 @@ Pseudo classes (:) let us define a style for a **_special state_** of an element
 }
 ```
 
-Pseudo elements (::) let us define a style for a _**specific part**_ of an element:
+Pseudo-elements (::) let us define a style for a _**specific part**_ of an element:
 ```
 .someClass p::first-letter {
     color: red;
@@ -219,7 +220,7 @@ Overwrite the default positioning and push it to the right or left.
  - [More on float:](https://developer.mozilla.org/en-US/docs/Web/CSS/float){:target="_blank"}
 
 Note that float takes the element out of the document flow, which can be troublesome for the following objects. This 
-is also why it isn't used much any more. Flexbox and the like are newer and better alternatives.
+is also why it isn't used much anymore. Flexbox and the like are newer and better alternatives.
 
 To correct the float problem add a similar element after the floated element and clear its floating as follows:
 ```
@@ -240,25 +241,25 @@ To correct the float problem add a similar element after the floated element and
 
 Position Properties: top, right, bottom, left, and z-index
 
-| position | Position Context                                 | Description                                                                                                                                             |
-|----------|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| static   | default position in document flow.               | From the position to element has in the document flow. Position properties don't apply                                                                  |
-| fixed    | view port                                        | Takes the element out of the document flow. Becomes an inline-block element. Like a flyover                                                             |
-| absolute | HTML element or closest parent with position set | Takes the element out of the document flow.                                                                                                             |
+| position | Position Context                                 | Description                                                                                                                                               |
+|----------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| static   | default position in document flow.               | From the position to element has in the document flow. Position properties don't apply                                                                    |
+| fixed    | view port                                        | Takes the element out of the document flow. Becomes an inline-block element. Like a flyover                                                               |
+| absolute | HTML element or closest parent with position set | Takes the element out of the document flow.                                                                                                               |
 | relative | default position in document flow.               | Does not take the element out of the document flow. Positioned from its original position. This is also a way to mark a context for absolute positioning. |
-| sticky   | view port + parent content                       | This is a combination of relative and fixed, the element will move until it hits some boundary and then stops moving.                                   |
+| sticky   | view port + parent content                       | This is a combination of relative and fixed, the element will move until it hits some boundary and then stops moving.                                     |
 
 Note: adding overflow: hidden to a parent, will hide a child if its position properties take out of the parents boundaries. Think of it as like scrolling.  
 
 Stacking context:
 The order of element display in the order they are written in the document; provided all z-index are zero.
-By adding a position properties to an element, that element then has its own position context and z-index will only work with it children.
+By adding a position properties to an element, that element then has its own position context and z-index will only work with its children.
 
 **Important Note:** Z-Index only effects with position properties set to something other than static (default). This 
 doesn't apply to flex items. That is, you don't need a position property on a flex container to set the z-index.
 
 ### Background Positioning vs. Image Positioning 
-**background-image** is more flexable and should be used if you need such flexibility.  
+**background-image** is more flexible and should be used if you need such flexibility.  
 **img** is better for simple images that fit into the normal document flow.
 
 - [The background Property](https://developer.mozilla.org/en-US/docs/Web/CSS/background){:target="_blank"}
@@ -371,7 +372,7 @@ They adjust dynamically based on the current viewport conditions.
 **100vw** refers to 100% of the viewport width.  
 **85vh** refers to 85% of the viewport height.  
 **50vmin** refers to 50% of the smaller length of either viewport width or height.  
-**75vmax** refers to 75% of the larger of the viewports sizes.
+**75vmax** refers to 75% of the largest of the viewports sizes.
 
 
 ### Font-Related Lengths (rem and em)
@@ -420,7 +421,7 @@ and it's also one of the number one reason for StackOverflow questions on why th
 - [Quick meta tag overview](https://ui.dev/rwd/develop/responsive-html/viewport-meta-element){:target="_blank"}
 - [Media queries theory](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries){:target="_blank"}
 - [Applying media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries){:target="_blank"}
-- [Check your current device scale](mydevice.io){:target="_blank"}
+- [Check your current device scale](https://www.mydevice.io/){:target="_blank"}
 
 Understand the difference between **Hardware Pixels** and **Software Pixels**  
 One example of this is when you see a web page on a cell phone that looks like it should be on a computer.
@@ -546,7 +547,7 @@ body {
 }
 ```
 
-**Project supplied fonts** are retrieved from google and provided by the project as a resource using @font-face
+**Project supplied fonts** are retrieved from Google and provided by the project as a resource using @font-face
 
 ### @font-face
 
@@ -599,7 +600,7 @@ There are shorthands, look them up!
 ### Font Display Property
 
 The font display property impacts the loading of font, this has to do with which font is being displayed at which time 
-in the page loading process along with the formula used to decide when to fallback to other choices.
+in the page loading process along with the formula used to decide when to fall back to other choices.
 
 <img src="images/css-font-display-property.png" alt="Using the font-display Property" width="600"/>
 
@@ -743,7 +744,7 @@ align-self: center; positions the element content in the center of its area alon
 
 
 Elements not part of the document flow (position=fixed) are not part of the grid.
-So, in the case of having the header stay at the top of the view area while scrolling, that is done with a fix postion,
+So, in the case of having the header stay at the top of the view area while scrolling, that is done with a fix position,
 and thus takes it out of the document flow and grid.
 
 ## Transform
@@ -802,7 +803,7 @@ state of the described transition.
 Removing a class with a transition reverses out that transition!
 
 **Transition has 4 properties:**  
-transition-property e.g. opacity, tranforms, rotateX, etc.
+transition-property e.g. opacity, transforms, rotateX, etc.
 transition-duration How long to perform the transition
 transition-timing function This is a timing profile to how fast or slow thing happen during the transition (interesting)
 transition-delay When to actually start the transition.
@@ -837,7 +838,7 @@ Chrome has a great timing function design tool in its developer panel.
 **IMPORTANT NOTE:**   
 Transition are omitted from classes including the **display none or block** properties. 
 If you need to do this, you must use Javascript first change the display variable and then a short setTimeout to apply the transition class;
-or the other way around depending on the transition you are looking for. Also, when running an transition prior to setting diplay=none, you 
+or the other way around depending on the transition you are looking for. Also, when running a transition prior to setting display=none, you 
 must make sure the setTimeout is just as long as the transition duration!
 
 
@@ -862,7 +863,7 @@ the last 50% to transition to the (10deg) position. This is the effect the "wigg
 ```
 
 The following runs each pass of the wiggle animation smoothly along 200ms, but doesn't start till 1s after the page is loaded,
-It run through the entire keyframe set 8 times and finishes in the original position.
+It runs through the entire keyframe set 8 times and finishes in the original position.
 
 Note: you can also specify which keyframe is the original position and which is the final position.
 ```
@@ -894,7 +895,10 @@ ctaButton.addEventListener("animationend", function() {
 - [CSS Modules & Working Groups](https://www.w3.org/TR/tr-groups-all#tr_Cascading_Style_Sheets__CSS__Working_Group){:target="_blank"}   
 - [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables){:target="_blank"}   
 - [Vendor Prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix){:target="_blank"}   
-- [Which Vendor Prefixes should you use?](http://shouldiprefix.com/){:target="_blank"}   
+- [Which Vendor Prefixes should you use?](http://shouldiprefix.com/){:target="_blank"}
+- Auto Prefixer
+  - [Code](https://github.com/postcss/autoprefixer){:target="_blank"} 
+  - [Online Auto Prefixer](https://autoprefixer.github.io){:target="_blank"}
 - [@supports](https://developer.mozilla.org/en-US/docs/Web/CSS/%40supports){:target="_blank"}   
 - [BEM in Detail](http://getbem.com/introduction/){:target="_blank"}   
 - [An introduction to Bootstrap 4](https://academind.com/learn/css/bootstrap-4-tutorial/){:target="_blank"}   
@@ -928,7 +932,7 @@ mobile-nav__item a {
 ### Vendor Prefix
 
 Vendor Prefix is a way for the different browser vendors support new suggested updates without breaking things when
-the official specification comes out. A vendor starts with a prefixed CSS property name until the finalized specificaiion 
+the official specification comes out. A vendor starts with a prefixed CSS property name until the finalized specification 
 or implementation is released.
 
 ```
@@ -976,3 +980,5 @@ Polyfills do come at a cost as they need to be downloaded and run on the clients
 
 ### Vanilla CSS vs. CSS Frameworks
 <img src="images/css-vanilla-css-vs-frameworks.png" alt="Vanilla CSS vs. CSS Frameworks" width="600"/>
+
+## Sass
