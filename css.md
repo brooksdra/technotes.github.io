@@ -52,7 +52,18 @@
     * [@supports](#supports)
     * [Polyfills](#polyfills)
     * [Vanilla CSS vs. CSS Frameworks](#vanilla-css-vs-css-frameworks)
-  * [Sass](#sass)
+  * [SASS or SCSS](#sass-or-scss)
+    * [Nested Selectors](#nested-selectors)
+    * [Nested Property Names](#nested-property-names)
+    * [Variables](#variables)
+    * [Lists and Maps](#lists-and-maps)
+    * [Built-in Function](#built-in-function)
+    * [Adding Simple Arithmetics](#adding-simple-arithmetics)
+    * [Adding Better Import and Partials](#adding-better-import-and-partials)
+    * [Advanced @Media Queries](#advanced-media-queries)
+    * [Inheritance](#inheritance)
+    * [Adding Mixins](#adding-mixins)
+    * [Using the Ampersand Operator](#using-the-ampersand-operator)
 <!-- TOC -->
 
 
@@ -981,4 +992,425 @@ Polyfills do come at a cost as they need to be downloaded and run on the clients
 ### Vanilla CSS vs. CSS Frameworks
 <img src="images/css-vanilla-css-vs-frameworks.png" alt="Vanilla CSS vs. CSS Frameworks" width="600"/>
 
-## Sass
+## SASS or SCSS
+
+- [Dive deeper into Sass](https://sass-lang.com/guide){:target="_blank"}
+
+Syntactically Awesome Style Sheets is a CSS superset that does not run in the browser, but extends CSS during development.
+
+On my Mac, I installed it using: ```sudo npm install -g sass```
+
+file.sass: Does not use semicolons or curly braces. Instead use file.scss to maintain the typical CSS structure.  
+This might be important for migrating standard CSS to Sass.
+
+To compile the sass file to css use: ```sass main.scss main.css```
+To watch the main.css for changes and compile on change use: ```sass --watch main.scss:main.css```
+
+### Nested Selectors
+```
+.documentation-links {
+  list-style: none;
+  margin: 1rem 0 0 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
+
+.documentation-links li {
+  margin: 0.2rem 0;
+  background: white;
+}
+
+.documentation-links .documentation-link {
+  text-decoration: none;
+  color: #521751;
+  display: block;
+  padding: 0.2rem;
+  border: 0.05rem solid #521751;
+}
+
+.documentation-links .documentation-link:hover,
+.documentation-links .documentation-link:active {
+  color: white;
+  background: #fa923f;
+  border-color: #fa923f;
+}
+```
+
+Becomes:
+```
+.documentation-links {
+  list-style: none;
+  margin: 1rem 0 0 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  
+  li {
+  margin: 0.2rem 0;
+    background: white;
+  }
+  
+  .documentation-link {
+    text-decoration: none;
+    color: #521751;
+    display: block;
+    padding: 0.2rem;
+    border: 0.05rem solid #521751;
+  }
+  
+  .documentation-link:hover,
+  .documentation-link:active {
+    color: white;
+    background: #fa923f;
+    border-color: #fa923f;
+  }
+}
+```
+
+### Nested Property Names
+Uses i
+```
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+```
+Becomes:
+```
+.container {
+  display: flex;
+  flex: {
+    direction: column;
+    wrap: nowrap;
+  }
+  align-items: center;
+}
+```
+
+### Variables
+Variable replace usage in the compile phase and this do not rely on CSS variables.
+
+Define at the top of the file as: 
+```
+$main-color = #521751;
+```  
+Use it elsewhere as:
+```
+.documentation-link {
+  text-decoration: none;
+  color: $main-color;
+  display: block;
+  padding: 0.2rem;
+  border: 0.05rem solid $main-color;
+}
+```
+### Lists and Maps
+
+A list is just a bunch of comma or spaces separated variables typically used for shorthands.
+```
+$border-default: 0.05rem solid $main-color;
+$default-font-family: Arial, sans-serif;
+```
+A map is a list of name-value pairs as expected.
+```
+$colors: (
+  main: #521751,
+  secondary: #fa923f
+);
+```
+Look up the value:
+```
+.documentation-link {
+  text-decoration: none;
+  color: map-get($colors, main);
+}
+```
+
+### Built-in Function
+
+Built-in functions provide a lot of functionality, the kind that just can't be presented while processing CSS live.
+
+First off, the map-get shown above is a built in function.
+
+Another built in is a way to modify and existing color. In this case, lighten the main color by 72%.
+```
+.sass-introduction {
+  border: $border-defaut;
+  background: lighten(map-get($colors, main), 72%);
+  padding: 2rem;
+  text-align: center;
+}
+```
+
+### Adding Simple Arithmetics
+A way to use math to adjust properties accordingly.
+```
+$size-default: 1rem;
+```
+To use a multiple of $size-default.
+```
+.sass-introduction {
+  border: $border-default;
+  background: lighten(map-get($colors, main), 72%);
+  padding: $size-default * 2;
+  text-align: center;
+}
+```
+
+### Adding Better Import and Partials
+A partial can be described as an scss file that is imported by many of the other .scss files.
+Its name starts with an underscore, and will be imported directly into the importing file.
+```
+_variables.scss
+```
+Sass will pull in the partials and make sure no duplicates are created.
+
+When importing many .css files, if available, make a copy as .scss, and then import any partials 
+into those file.
+```
+@import "_variables.scss"
+@import "other-file-that-might-also-have-an-import.scss"
+```
+
+If all files are designed this way, we end up with only one main.css containing all of our css, but, we can work with the 
+individual files for organization. This process also improves performance by reducing the HTTP calls for the individual files.
+
+### Advanced @Media Queries
+@Media Queries can be embedded directly with there CSS. This is not a requirement, but some developers prefer this format.
+
+From:
+```
+@media (min-width: 40rem) {
+  html {
+    font-size: 125%;
+  }
+  
+  .container {
+    padding: 3rem 0;
+  }
+  
+  .sass-introduction,
+  .sass-details {
+    width: 30rem;
+  }
+}
+```
+To:
+```
+html {
+  font-size: 94.75%;
+  @media (min-width: 40rem) {
+    font-size: 125%;
+  }
+}
+
+.container {
+  align-items: center;
+  padding: $size-default * 3 0;
+  box-sizing: border-box;
+  
+  @media (min-width: 40rem) {
+    padding: 3rem 0; 
+  }
+}
+
+.sass-introduction {
+  text-align: center;
+  box-shadow: 0.2rem 0.2rem 0.1rem #ccc;
+  width: 90%;
+  box-sizing: border-box;
+  
+  p {
+    margin: 0;
+  }
+  
+  @media (min-width: 40rem) {
+    width: 30rem;
+  }
+}
+
+.sass-details {
+  text-align: center;
+  margin: 2rem 0;
+  width: 90%;
+  box-sizing: border-box;
+  
+  @media (min-width: 40rem) {
+    width: 30rem;
+  }  
+}
+```
+### Inheritance
+SASS selectors can inherit from other SASS selectors
+
+```
+.sass-introduction {
+  border: $border-default;
+  background: lighten(map-get($colors, main), 72%);
+  padding: $size-default * 2;
+  text-align: center;
+  box-shadow: 0.2rem 0.2rem 0.1rem #ccc;
+  width: 90%;
+  box-sizing: border-box;
+  
+  p {
+    margin: 0;
+  }
+  
+  @media (min-width: 40rem) {
+    width: 30rem;
+  }
+}
+
+.sass-details {
+  border: $border-default;
+  background: lighten(map-get($colors, main), 72%);
+  padding: 1rem;
+  text-align: center;
+  margin: 2rem 0;
+  width: 90%;
+  box-sizing: border-box;
+  
+  @media (min-width: 40rem) {
+    width: 30rem;
+  }  
+}
+```
+TO:
+```
+.sass-section {
+  border: $border-default;
+  background: lighten(map-get($colors, main), 72%);
+  padding: $size-default * 2;
+  text-align: center;
+  width: 90%;
+  box-sizing: border-box;
+  @media (min-width: 40rem) {
+    width: 30rem;
+  }    
+}
+
+.sass-introduction {
+  @extend .sass-section;
+  box-shadow: 0.2rem 0.2rem 0.1rem #ccc;    
+}
+
+.sass-details {
+  @extend .sass-section;
+  margin: 2rem 0;
+}
+```
+### Adding Mixins
+
+When the developer defines their own functions (set of properties) as follows:
+
+```
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+```
+Used as follows, SASS replaces the @include line with the contents of the mixin.
+```
+.container {
+  @include display-flex();
+  flex: {
+    direction: column;
+    wrap: wrap;
+  }
+  align-items: center;
+  padding: $size-default * 3 0;
+  box-sizing: border-box;
+  
+  @media (min-width: 40rem) {
+    padding: 3rem 0;
+  }
+}
+```
+You can also allow for passed in arguments and entire content like so:
+```
+@mixin media-min-width($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+```
+Which is used like so:
+```
+html {
+  font-size: 94.75%;
+  @include media-min-width(40rem) {
+    font-size: 125%;
+  }
+}
+```
+### Using the Ampersand Operator
+The Ampersand Operator changes the nexted meaning from a space to direct connection.
+
+```
+.documentation-link {
+  text-decoration: none;
+  color: map-get($colors, main);
+  display: block;
+  padding: 0.2rem;
+  border: $border-default;
+}
+
+.documentation-link:hover,
+.documentation-link:active {
+  color: white;
+  background: map-get($colors, secondary);
+  border-color: map-get($colors, secondary);
+}
+```
+Based on what we now know about nesting, the following looks like it would work...
+```
+.documentation-link {
+  text-decoration: none;
+  color: map-get($colors, main);
+  display: block;
+  padding: 0.2rem;
+  border: $border-default;
+
+  :hover,
+  :active {
+    color: white;
+    background: map-get($colors, secondary);
+    border-color: map-get($colors, secondary);
+  }
+}
+```
+But it doesn't, this winds up leaving the space between the selector and the pseudo selector.
+```
+.documentation-link .documentation-link :hover, .documentation-link .documentation-link :active { 
+  ... 
+}
+```
+Use the ampersand '&' to squeeze together the selector and pseudo selector.
+```
+.documentation-link {
+  text-decoration: none;
+  color: map-get($colors, main);
+  display: block;
+  padding: 0.2rem;
+  border: $border-default;
+
+  &:hover,
+  &:active {
+    color: white;
+    background: map-get($colors, secondary);
+    border-color: map-get($colors, secondary);
+  }
+}
+```
