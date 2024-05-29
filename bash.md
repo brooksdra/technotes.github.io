@@ -2,6 +2,7 @@
 
 <!-- TOC -->
 * [Bash](#bash)
+    * [Profile Info](#profile-info)
     * [COMMAND LINE](#command-line)
     * [HISTORY](#history)
     * [WSL bash script not working because of /bin/bash^M bad interpreter: No such file or directory](#wsl-bash-script-not-working-because-of-binbashm-bad-interpreter-no-such-file-or-directory)
@@ -51,13 +52,17 @@
     * [Process options passed in](#process-options-passed-in)
     * [Ask for input](#ask-for-input)
     * [Ask for option selection, will keep asking till a valid options or quit is provided](#ask-for-option-selection-will-keep-asking-till-a-valid-options-or-quit-is-provided)
-  * [Advanced Scripts](#advanced-scripts)
+  * [Advanced Scripting Examples](#advanced-scripting-examples)
     * [A script to extract Excel data from a tab delimited file with {#excel-script-id}](#a-script-to-extract-excel-data-from-a-tab-delimited-file-with-excel-script-id)
     * [Imaging Controller: How many tests were run or images between each hang/crash:](#imaging-controller-how-many-tests-were-run-or-images-between-each-hangcrash)
     * [call-many-something.sh](#call-many-somethingsh)
     * [curl-simple-send.sh](#curl-simple-sendsh)
     * [curl-many-results.sh](#curl-many-resultssh)
 <!-- TOC -->
+
+### Profile Info
+.bash_profile : bash shell configuration sourced when logging into account (mac see .zprofile). Sets environment variables, aliases, etc.   
+.bashrc       : new terminal window configuration (mac see .zshrc). Sets shell specific aliases, and custom prompts.  
 
 ### COMMAND LINE
 `history | grep stringToFind`            # Lists all commands from history containing stringToFind
