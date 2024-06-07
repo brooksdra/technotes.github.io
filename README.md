@@ -1,4 +1,5 @@
 # Main Notes
+- [Angular](angular.md)
 - [Bash](bash.md)
 - [CSS](css.md)
 - [Docker](docker.md)

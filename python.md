@@ -56,7 +56,7 @@ https://levelup.gitconnected.com/a-comprehensive-guide-to-pytest-3676f05df5a0
 ### A good way to count the number of calls to a method is by using pytest.mocker
 `mock_logger_info = mocker.patch.object(logging.Logger, 'info')`
 `assert mock_logger_info.call_count == expected_log_counts`
-Also see C:\ProtedyneSuite\charm-medtox-dev\ImagingSubsystem\tests\commons\hardware\leds\led_controller_test.py
+Also see C:\Pro...Suite\charm-medtox-dev\ImagingSubsystem\tests\commons\hardware\leds\led_controller_test.py
 
 ### Mock complete method calls of the internal logger, in this case to count method calls.
 `log_info_count = 0;`  

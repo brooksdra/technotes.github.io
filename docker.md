@@ -58,7 +58,7 @@ Copy a file from host system into a running docker container
 docker cp c:\downloads\CilaServicesData.json <container-name-or-id>:/tmp/CilaServicesData.json
 docker exec <container-name-or-id>mongoimport -d DataCommons -c sortDataMongo --file /tmp/CilaServicesData.json
 Live example with authentication:
-docker exec mongodb mongoimport --username engineer --password protedyne --authenticationDatabase admin -d DataCommons -c sortDataMongo --file /tmp/CilaServicesData.json
+docker exec mongodb mongoimport --username engineer --password pro... --authenticationDatabase admin -d DataCommons -c sortDataMongo --file /tmp/CilaServicesData.json
 
 The Tutorial as of 2022-09-19 uses a containerized git image to clone a github project, then a the copy command to get the clone onto the local file system.
 
@@ -149,12 +149,10 @@ This runs the tutorial application on port 80 with the container named docker-tu
 This runs the tutorial application on port 8088 with the container named docker-tutorial2, just for funzies
 `docker run -d -p 8088:80 --name docker-tutorial2 docker101 tutorial`
 
-`docker tag docker101tutorial davebprotedyne/docker101tutorial`
-`docker push davebprotedyne/docker101tutorial`
+`docker tag docker101tutorial davebpro.../docker101tutorial`
+`docker push davebpro.../docker101tutorial`
 
 Also run the following for funzies:
 `docker run -d -p 81:80 --name get-started docker/getting-started`
 Modified from Tutorial of the first app
 `docker run -d -p 80:80 docker/getting-started`
-
-

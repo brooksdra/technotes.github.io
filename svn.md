@@ -1,4 +1,9 @@
-#SVN
+# SVN
+
+### Check out an existing project.
+``` 
+svn co svn:/svn.pro..e.pro...e.com/Propel/branches/upgrade-dev ./workspace
+```
 
 From directory C:\Pr.......Suite\vscode-propel-upgrade-dev\CilaSpace\PatientInventoryInterface\src\main\java\com\pro......\patientInventory
 
@@ -184,4 +189,3 @@ Reverted 'CilaScriptEngine\src\test\resources\config\lilyConnectionManager.xml'
 
 ### Check out a revision
 `svn checkout -r 3940 svn://svn.pro.......pro.......com/CilaEnterprise/CilaCommons/branches/cilacommons-dev`
-

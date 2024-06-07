@@ -5,7 +5,7 @@ Also see IntelliJ notes for more global editor details
 The Shelf is workspace specific
 Use Settings > Version Control > Shelf to set the directory.
 
-I prefer a centralized place /ProtedyneSuite/charm-resources/shelf
+I prefer a centralized place /Pro...Suite/charm-resources/shelf
 
 ## Virtual Environment 
 There is a problem starting a new Python workspace with the same name as a previously deleted workspace.  For me, it is caused by checking out the project into a similarly named subdirectory.
@@ -44,7 +44,7 @@ Notice each jdk tag contains a workspace:
           <root type="composite" />
         </sourcePath>
       </roots>
-      <additional ASSOCIATED_PROJECT_PATH="C:/ProtedyneSuite/charm-medtox-ic-qa" SDK_UUID="5eb19f9d-4972-44f8-952c-826af29facb9">
+      <additional ASSOCIATED_PROJECT_PATH="C:/Pro...Suite/charm-medtox-ic-qa" SDK_UUID="5eb19f9d-4972-44f8-952c-826af29facb9">
         <setting name="FLAVOR_ID" value="VirtualEnvSdkFlavor" />
         <setting name="FLAVOR_DATA" value="{}" />
       </additional>

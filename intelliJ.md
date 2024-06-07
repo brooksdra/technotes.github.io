@@ -28,7 +28,7 @@ Take a look at this https://www.jetbrains.com/help/idea/migrating-from-eclipse-t
 The Shelf is workspace specific
 Use settings > Version Control > Shelf to set the directory.
 
-I prefer a centralized place /ProtedyneSuite/idea-resources/shelf
+I prefer a centralized place /Pro...Suite/idea-resources/shelf
 
 ## Editor Settings
 **Allow Mouse font change**  
