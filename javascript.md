@@ -1,5 +1,14 @@
 # JavaScript
 
+## Operators
+
+### ?? Nullish Coalescing
+
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing){:target="_blank"}
+```
+const foo = null ?? 'default string';
+// foo is 'default string'
+```
 ### … Operator 
 
 Means all items in the object, all items in an array, all properties of an object
