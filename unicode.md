@@ -11,6 +11,7 @@
 - ° Degree
 - 😲 Astonished
 - ¢ Cent Sign
+- ⌣ Smile
 
 ## Usages
 Really, the simplest way to use unicode characters is to find one you like, copy it from the souce and paste it whereever you want it to be. Most editors and email clients are setup for unicode.
