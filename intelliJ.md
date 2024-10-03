@@ -28,7 +28,10 @@ Take a look at this https://www.jetbrains.com/help/idea/migrating-from-eclipse-t
 The Shelf is workspace specific
 Use settings > Version Control > Shelf to set the directory.
 
-I prefer a centralized place /Pro...Suite/idea-resources/shelf
+I prefer a centralized place:
+"C:\Pro...Suite\JetBrains-Resources\storm-shelf"
+"C:\Pro...Suite\JetBrains-Resources\charm-shelf"
+"C:\Pro...Suite\JetBrains-Resources\idea-shelf"
 
 ## Editor Settings
 **Allow Mouse font change**  
@@ -38,11 +41,15 @@ To enable/disable the feature, Settings > Editor > General: Change Font size wit
 This is called a preview tab and shows italics file names.
 Preview tabs do not stay open, are reused until explicitly kept open (eg. via double clicked or editing).
 To enable/disable the feature, Settings > Editor > General > Editor Tabs > Enable preview tab checkbox
+Tab Limit 100
+After close, go to most recently tab
 
 **Open IDE and new project behaviors**  
 Settings > Appearance & Behavior > System Settings > Project Opening
+Uncheck reopen project on startup
+Ask where to open a new project
 
-**Ignoring or changing error checking**  
+**Ignoring or changing error checking**   (Not sure this is the same..)
 File -> Settings -> search for inspection -> then error message
 Unresolved Query brings up JPA, I turned that off
 Unresolved Symbol in Java Doc, I turned that down to warning level
