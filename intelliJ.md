@@ -29,9 +29,11 @@ The Shelf is workspace specific
 Use settings > Version Control > Shelf to set the directory.
 
 I prefer a centralized place:
-"C:\Pro...Suite\JetBrains-Resources\storm-shelf"
-"C:\Pro...Suite\JetBrains-Resources\charm-shelf"
-"C:\Pro...Suite\JetBrains-Resources\idea-shelf"
+```
+C:\Pro...Suite\JetBrains-Resources\storm-shelf
+C:\Pro...Suite\JetBrains-Resources\charm-shelf
+C:\Pro...Suite\JetBrains-Resources\idea-shelf
+```
 
 ## Editor Settings
 **Allow Mouse font change**  
