@@ -51,10 +51,12 @@ Settings > Appearance & Behavior > System Settings > Project Opening
 Uncheck reopen project on startup
 Ask where to open a new project
 
-**Ignoring or changing error checking**   (Not sure this is the same..)
-File -> Settings -> search for inspection -> then error message
-Unresolved Query brings up JPA, I turned that off
+**Ignoring or changing error checking**  
+File -> Settings -> Editor -> Inspections -> Search Right for
+```
+Unresolved Query brings up JPA, I turned that of
 Unresolved Symbol in Java Doc, I turned that down to warning level
+```
 
 **Organize Imports**  
 File -> Settings -> Editor -> Code Style -> Java -> imports tab  
@@ -62,6 +64,12 @@ Check Use single class import
 Class count to use import with '*' = 999  
 Names count to use static import with '*' = 999  
 Import layout should be: 
+
+Package to Use Import with '*'
+java.awt.*
+javax.swing.*
+
+select Layout static import seperately
 ```
 Import static all other imports  
 <blank line>  
@@ -83,7 +91,7 @@ Also, there is a Subversion view is where everything winds up.
 To see history, right click on the project select Subversion | Show History. If there are more than 1 repo, the tab will have a dropdown.
 
 New files aren't automatically add to SVN:  
-Go to File -> Settings -> Version control -> Confirmation -> When files are created You're probably looking for "Add silently".
+Go to File -> Settings -> Version control -> Confirmation -> When files are created You're probably looking for "Add silently". Check Apply to files created outside IntelliJ IDEA
 Note: In IntelliJ 6 or earlier versions this is done with File -> Settings -> Version control -> General Settings -> Add silently
 From <https://stackoverflow.com/questions/2817452/add-a-new-file-in-intellij-doesnt-add-to-subversion> 
 
