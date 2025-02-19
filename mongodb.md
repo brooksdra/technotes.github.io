@@ -86,3 +86,18 @@ db.iMatrixBin.aggregate( [
 }}
 ] )
 ```
+
+## Export/Import Entire Databases
+
+### Export to local file
+This can be done locally or remotely via the --host parameter.
+This will dump all collections from the database.
+```
+"%MONGO_HOME%\bin\mongodump" --host localhost --db DataCommons --username un --password pw --authenticationDatabase admin --out=C:/Downloads/MongoDump/DataCommons 
+```
+### Import from local file
+The export dumps a directory structure similar to the database structure and this layout must be maintained for the import.
+```
+"%MONGO_HOME%\bin\mongorestore" --host localhost --username un --password pw --authenticationDatabase admin C:/Downloads/MongoDump/DataCommons 
+```
+
