@@ -30,10 +30,12 @@ Project: (fields to return)
 ### Bins created after x and that have tubes in them
 `{$and: [{"createTime" : { $gte : new ISODate("2018-09-17T00:00:00Z") }},{ tubes: { $ne: 1.99 } }, { tubes: { $exists: true } }]}` 
 ### BinEvents inTransit after 
-`{$and: [{"eventTime" : { $gte : new ISODate("2020-06-01T00:00:00Z") }}, { binState: 'inTransit' }]}` 
-
-### Filtered without _Id and only binBarcode and sortSessionId
-`{_id: 0, binBarcode : 1, sortSessionId: 1}` 
+```
+Filter (eventTime and binState): 
+{$and: [{"eventTime" : { $gte : new ISODate("2020-06-01T00:00:00Z") }}, { binState: 'inTransit' }]}
+Project (not _id, just binBarcode and sortSessionId):
+{_id: 0, binBarcode : 1, sortSessionId: 1}
+```
 
 ### Bins where barcode ends in _rfid
 `{ "binBarcode": /.*_rfid$/ }`
