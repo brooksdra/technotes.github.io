@@ -6,8 +6,21 @@
 **Second find argument is PROJECT which is columns to return**
  
 ## From compass just get the _id
-`FILTER: {binBarcode: "A2_RFID"}`  
-`PROJECT: {_id:1}`
+```
+Filter (query):
+{binBarcode: "A2_RFID"}
+
+Project (just return the id):
+{_id:1}
+```
+
+```
+Filter (query): 
+{"$or":[{"name": "EC.SetTemp" },{ "name": "ExperimentalMode"},{ "name": { "$regex": "John", "$options": "i" }},{ "age": { "$gt": 25 } }]} 
+
+Project: (fields to return) 
+{"name": 1, “age”: 1 } 
+```
  
 ### Bins created after x
 `{"createTime" : { $gte : new ISODate("2018-09-17T00:00:00Z") }}`
